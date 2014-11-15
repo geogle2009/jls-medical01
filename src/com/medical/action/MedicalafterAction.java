@@ -3,6 +3,8 @@ package com.medical.action;
 import java.util.List;
 import java.util.Map;
 
+import net.sf.json.JSONObject;
+
 import com.medical.common.Base64Image;
 import com.medical.common.FileUpload;
 import com.medical.dto.BaseInfoDTO;
@@ -38,7 +40,12 @@ public class MedicalafterAction extends ActionSupport {
 
 	public String countassist() {
 		medicalafterDTO = baseinfoService.findCountAssist(medicalafterDTO);
-		return result;
+		JSONObject json = new JSONObject();
+		json.put("r", medicalafterDTO.getR());
+		json.put("assitpay", medicalafterDTO.getAsisstpay());
+		json.put("actId", medicalafterDTO.getActId());
+		result = json.toString();
+		return SUCCESS;
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -79,8 +86,11 @@ public class MedicalafterAction extends ActionSupport {
 		FileUpload fu = new FileUpload("/file/medicalafter");
 		String dir = fu.filepath + "\\" + medicalafterDTO.getMaId() + "\\";
 		fu.MakeDir(dir);
-		for (int i = 0; i < filebase64.length; i++) {
-			Base64Image.GenerateImage(filebase64[i], dir + (i + 1) + ".jpg");
+		if (null != filebase64) {
+			for (int i = 0; i < filebase64.length; i++) {
+				Base64Image
+						.GenerateImage(filebase64[i], dir + (i + 1) + ".jpg");
+			}
 		}
 		return SUCCESS;
 	}

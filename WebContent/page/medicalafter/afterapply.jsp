@@ -2,6 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sx" uri="/struts-dojo-tags"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -60,7 +66,7 @@
 <title>医后报销录入</title>
 </head>
 <body style="padding: 10px 10px 10px 10px;">
-	<s:form enctype="multipart/form-data" action="afterapply" method="post"
+	<s:form id="aaaaa" enctype="multipart/form-data" action="afterapply" method="post"
 		theme="simple" onsubmit="return check();">
 		<s:hidden name="medicalafterDTO.familyno"></s:hidden>
 		<s:hidden name="medicalafterDTO.membername"></s:hidden>
@@ -78,6 +84,7 @@
 		<s:hidden name="medicalafterDTO.onNo"></s:hidden>
 		<s:hidden name="medicalafterDTO.persontype"
 			value="%{medicalafterDTO.assistType}%{medicalafterDTO.asort}"></s:hidden>
+			<s:hidden name="medicalafterDTO.actId" id="actid"></s:hidden>
 		<table align="center" width="100%" class="t1" border="0"
 			cellpadding="0" cellspacing="0">
 			<tr>
@@ -143,9 +150,13 @@
 				<td><s:select id="medicaltype"
 						name="medicalafterDTO.medicaltype" list="#{'1':'住院','2':'门诊'}"
 						listKey="key" listValue="value"></s:select></td>
-				<td width="17%">患病名称</td>
-				<td colspan="3"><s:textfield id="sickencontent"
-						name="medicalafterDTO.sickencontent" cssStyle="width:320" /></td>
+				<td width="17%">门诊大病</td>
+				<td colspan="1">
+						<s:select name="medicalafterDTO.diagnose" list="#{'0001':'尿毒症','0002':'肝、肾脏移植（抗排异治疗）','0004':'肿瘤（仅限于放疗、化疗）','0005':'骨髓移植（抗排异治疗）','0006':'心脏移植（抗排异治疗）','-1':'其他'}" listKey="key" listValue="value"></s:select>
+					</td>
+					<td>患病名称</td>
+					<td><s:textfield id="sickencontent"
+						name="medicalafterDTO.sickencontent"/></td>
 			</tr>
 			<tr>
 				<td width="17%">总费用</td>
@@ -203,7 +214,7 @@
 						onkeyup="if(!this.value.match(/^[\+\-]?\d*?\.?\d*?$/))this.value=this.t_value;else this.t_value=this.value;if(this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/))this.o_value=this.value"
 						onblur="if(!this.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?|\.\d*?)?$/))this.value=this.o_value;else{if(this.value.match(/^\.\d+$/))this.value=0+this.value;if(this.value.match(/^\.$/))this.value=0;this.o_value=this.value}" /></td>
 				<td colspan="2">
-					<button style="width: 250px;">计算救助金</button>
+					<button type="button" style="width: 250px;" onclick="countassist()">计算救助金</button>
 				</td>
 				<td width="17%">审批意见</td>
 				<td><s:select id="approveresult"
@@ -284,6 +295,23 @@
 	function updateload() {
 		var windowprops = "dialogWidth:860px;dialogHeight:700px";
 		window.showModalDialog("index.html", window, windowprops);
+	}
+	function countassist(){
+		var formParam = $("#aaaaa").serialize();//序列化表格内容为字符串    
+	    $.ajax({    
+	        type:'post',        
+	        url:'<%=basePath%>page/medicalafter/countassist.action',    
+	        data:formParam,    
+	        cache:false,    
+	        dataType:'json',    
+	        success:function(data){
+	        	alert(data);
+	        	var dataObj=eval("("+data+")");
+	        	 alert(dataObj.r);
+	        	 $("#asisstpay")[0].value=dataObj.assitpay;
+	        	 $("#actid")[0].value=dataObj.actId;
+	        }    
+	    }); 
 	}
 </script>
 </html>

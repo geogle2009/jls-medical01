@@ -506,107 +506,67 @@ public class BaseinfoServiceImpl implements BaseinfoService {
 		return e;
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public MedicalafterDTO saveAfterApply(MedicalafterDTO medicalafterDTO) {
-	
-			/*JzActExample example = new JzActExample();
-			example.createCriteria()
-					.andMemberIdEqualTo(medicalafterDTO.getMemberId())
-					.andMemberTypeEqualTo(medicalafterDTO.getMemberType())
-					.andActYearEqualTo((short) Calendar.YEAR);
 
-			List<JzAct> acts = jzActDAO.selectByExample(example);
-			JzAct currentact = new JzAct();
-			if (null != acts && acts.size() > 0) {
-				currentact = acts.get(0);
-			} else {
-				currentact.setMemberId(medicalafterDTO.getMemberId());
-				currentact.setMemberType(medicalafterDTO.getMemberType());
-				currentact.setActYear((short) Calendar.YEAR);
-				currentact.setActBizInhospitalTimes((short) 0);
-				currentact.setActBizMoney(new BigDecimal(0));
-				currentact.setActBizMoney2(new BigDecimal(0));
-				currentact.setActId(jzActDAO.insertSelective(currentact));
-			}*/
-
-			JzMedicalafter record = new JzMedicalafter();
-			if (null == medicalafterDTO.getMaId()) {
-				record.setFamilyno(medicalafterDTO.getFamilyno());
-				record.setMembername(medicalafterDTO.getMembername());
-				record.setPaperid(medicalafterDTO.getPaperid());
-				record.setSsn(medicalafterDTO.getSsn());
-				record.setHospital(medicalafterDTO.getHospital());
-				record.setHospitallevel(medicalafterDTO.getHospitallevel());
-				record.setSickencontent(medicalafterDTO.getSickencontent());
-				record.setBegintime(medicalafterDTO.getBegintime());
-				record.setEndtime(medicalafterDTO.getEndtime());
-				record.setApproveresult(medicalafterDTO.getApproveresult());
-				record.setTotalcost(medicalafterDTO.getTotalcost());
-				record.setInsurepay(medicalafterDTO.getInsurepay());
-				record.setOutpay(medicalafterDTO.getOutpay());
-				record.setCapay(medicalafterDTO.getCapay());
-				record.setBusinesspay(medicalafterDTO.getBusinesspay());
-				record.setAsisstpay(medicalafterDTO.getAsisstpay());
-				record.setCreatetime(new Date());
-				record.setUpdatetime(record.getCreatetime());
-				record.setMemberId(medicalafterDTO.getMemberId());
-				record.setMemberType(medicalafterDTO.getMemberType());
-				record.setImplsts("0");
-				record.setTiketno(medicalafterDTO.getTiketno());
-				record.setMedicaltype(medicalafterDTO.getMedicaltype());
-				record.setInsuretype(medicalafterDTO.getInsuretype());
-				record.setPersontype(medicalafterDTO.getPersontype());
-				record.setOnNo(medicalafterDTO.getOnNo());
-				record.setPayLine(medicalafterDTO.getPayLine());
-				record.setHospitalpay(medicalafterDTO.getHospitalpay());
-				BigDecimal id = jzMedicalafterDAO.insertSelective(record);
-				medicalafterDTO.setMaId(id);
-/*
-				HashMap paramMap = new HashMap();
-				paramMap.put("DS", new Integer(record.getMemberType()));
-				paramMap.put("MEDICARE_TYPE",
-						new Integer(record.getMedicaltype()));
-				if ("111".equals(record.getPersontype())) {
-					paramMap.put("ZBZ_FLAG", 2);
-				} else if ("101".equals(record.getPersontype())) {
-					paramMap.put("ZBZ_FLAG", 2);
-				} else {
-					paramMap.put("ZBZ_FLAG", 1);
-				}
-				paramMap.put("HOSPITAL_LEVEL",
-						new Integer(record.getHospitallevel()));
-				paramMap.put("BIZ_TYPE", new Integer(record.getMedicaltype()));
-				paramMap.put("DIAGNOSE", new Integer(record.getSickencontent()));
-
-				paramMap.put("ZYCOUNT", currentact.getActBizInhospitalTimes());// 住院次数
-				paramMap.put("SINGLE_FLAG", 0);// 单病种标志，医后救助为0
-				paramMap.put("SINGLE_COUNT", 0);// 单病种次数，医后救助为0
-
-				paramMap.put("PAY_SUMMZ", currentact.getActBizMoney2());// 本年度门诊总救助金
-				paramMap.put("PAY_SUMZY", currentact.getActBizMoney());// 本年度住院总救助金
-
-				paramMap.put("PAY_TOTAL", record.getTotalcost().doubleValue());
-				paramMap.put("PAY_BEGINLINE", record.getPayLine().doubleValue());
-				paramMap.put("PAY_MEDICARE", record.getInsurepay()
-						.doubleValue());
-				paramMap.put("PAY_HOSADD", record.getHospitalpay()
-						.doubleValue());
-				paramMap.put("PAY_OUT", record.getOutpay().doubleValue());
-				paramMap.put("PAY_DBBX", record.getCapay().doubleValue());
-				paramMap.put("PAY_COMM", record.getBusinesspay().doubleValue());
-				paramMap.put("PAY_ASSIST", 0);
-				paramMap.put("CALC_DESC", "开始计算");
-				HashMap resultmap = executSQLDAO.countAssist(paramMap);
-
-				resultmap.get("PAY_ASSIST");
-				resultmap.get("CALC_DESC");*/
-
+		JzMedicalafter record = new JzMedicalafter();
+		if (null == medicalafterDTO.getMaId()) {
+			record.setFamilyno(medicalafterDTO.getFamilyno());
+			record.setMembername(medicalafterDTO.getMembername());
+			record.setPaperid(medicalafterDTO.getPaperid());
+			record.setSsn(medicalafterDTO.getSsn());
+			record.setHospital(medicalafterDTO.getHospital());
+			record.setHospitallevel(medicalafterDTO.getHospitallevel());
+			record.setSickencontent(medicalafterDTO.getSickencontent());
+			record.setBegintime(medicalafterDTO.getBegintime());
+			record.setEndtime(medicalafterDTO.getEndtime());
+			record.setApproveresult(medicalafterDTO.getApproveresult());
+			record.setTotalcost(medicalafterDTO.getTotalcost());
+			record.setInsurepay(medicalafterDTO.getInsurepay());
+			record.setOutpay(medicalafterDTO.getOutpay());
+			record.setCapay(medicalafterDTO.getCapay());
+			record.setBusinesspay(medicalafterDTO.getBusinesspay());
+			record.setAsisstpay(medicalafterDTO.getAsisstpay());
+			record.setCreatetime(new Date());
+			record.setUpdatetime(record.getCreatetime());
+			record.setMemberId(medicalafterDTO.getMemberId());
+			record.setMemberType(medicalafterDTO.getMemberType());
+			record.setImplsts("0");
+			record.setTiketno(medicalafterDTO.getTiketno());
+			record.setMedicaltype(medicalafterDTO.getMedicaltype());
+			record.setInsuretype(medicalafterDTO.getInsuretype());
+			record.setPersontype(medicalafterDTO.getPersontype());
+			record.setOnNo(medicalafterDTO.getOnNo());
+			record.setPayLine(medicalafterDTO.getPayLine());
+			record.setHospitalpay(medicalafterDTO.getHospitalpay());
+			record.setDiagnose(medicalafterDTO.getDiagnose());
+			BigDecimal id = jzMedicalafterDAO.insertSelective(record);
+			medicalafterDTO.setMaId(id);
+			JzAct jzAct = jzActDAO.selectByPrimaryKey(medicalafterDTO
+					.getActId());
+			if (medicalafterDTO.getMedicaltype().equals("1")) {
+				jzAct.setActBizInhospitalTimes((short) (jzAct
+						.getActBizInhospitalTimes() + 1));
+				jzAct.setActBizMoney(jzAct.getActBizMoney().add(
+						medicalafterDTO.getAsisstpay()));
+				jzAct.setActBizTimes((short) (jzAct.getActBizTimes() + 1));
+			} else if (medicalafterDTO.getMedicaltype().equals("2")) {
+				jzAct.setActBizMoney2(jzAct.getActBizMoney2().add(
+						medicalafterDTO.getAsisstpay()));
+				jzAct.setActBizTimes((short) (jzAct.getActBizTimes() + 1));
 			} else {
 			}
-		 
+			 Calendar calendar = Calendar.getInstance();  
+			    calendar.setTime(new Date());  
+			    int year = calendar.get(Calendar.YEAR);  
+			jzAct.setActYear((short) year);
+			jzActDAO.updateByPrimaryKeySelective(jzAct);
+		} else {
+		}
+
 		return medicalafterDTO;
 	}
-	@SuppressWarnings({ "unused", "rawtypes" })
+
+	@SuppressWarnings({ "rawtypes" })
 	@Override
 	public MedicalafterDTO findCountAssist(MedicalafterDTO medicalafterDTO) {
 		try {
@@ -629,60 +589,65 @@ public class BaseinfoServiceImpl implements BaseinfoService {
 				currentact.setActBizMoney2(new BigDecimal(0));
 				currentact.setActId(jzActDAO.insertSelective(currentact));
 			}
-			/*v_result := func_calcassist(ds => v_ds,
-                    medicare_type => v_medicare_type,
-                    zbz_flag => v_zbz_flag,
-                    hospital_level => v_hospital_level,
-                    biz_type => v_biz_type,
-                    diagnose => v_diagnose,
-                    zycount => v_zycount,
-                    single_flag => v_single_flag,
-                    single_count => v_single_count,
-                    pay_summz => v_pay_summz,
-                    pay_sumzy => v_pay_sumzy,
-                    pay_total => v_pay_total,
-                    pay_beginline => v_pay_beginline,
-                    pay_medicare => v_pay_medicare,
-                    pay_hosadd => v_pay_hosadd,
-                    pay_out => v_pay_out,
-                    pay_dbbx => v_pay_dbbx,
-                    pay_comm => v_pay_comm);*/
-			String ZBZ_FLAG="";
+			String ZBZ_FLAG = "";
 			if ("111".equals(medicalafterDTO.getPersontype())) {
-				 ZBZ_FLAG ="2";
+				ZBZ_FLAG = "2";
 			} else if ("101".equals(medicalafterDTO.getPersontype())) {
-				 ZBZ_FLAG ="2";
+				ZBZ_FLAG = "2";
 			} else {
-				 ZBZ_FLAG ="1";
+				ZBZ_FLAG = "1";
 			}
-			String sql = "select func_calcassist('"+medicalafterDTO.getMemberType()+"', "+
-                      " '"+medicalafterDTO.getMedicaltype()+"', "+
-                      " '"+ZBZ_FLAG+"', "+
-                      " '1', "+
-                      " '1', "+
-                      " '0002', "+
-                      " '4', "+
-                      " '0', "+
-                      "  '0', "+
-                      " '15100', "+
-                      " '6000', "+
-                      " '6000', "+
-                      " '600', "+
-                      " '1000', "+
-                      " '100', "+
-                      " '1000', "+
-                      " '0', "+
-                      " '0') as r from dual";
-		ExecutSQL executSQL = new ExecutSQL();
-		executSQL.setExecutsql(sql);
-	 	List<HashMap> maps=executSQLDAO.queryAll(executSQL);
-	 	
+			String sql = "select func_calcassist("
+					+ medicalafterDTO.getMemberType() + ","
+					+ medicalafterDTO.getInsuretype() + "," + ZBZ_FLAG + ","
+					+ medicalafterDTO.getHospitallevel() + ","
+					+ medicalafterDTO.getMedicaltype() + ",to_char('"
+					+ medicalafterDTO.getDiagnose() + "'),"
+					+ currentact.getActBizInhospitalTimes().intValue()
+					+ ",0,0," + currentact.getActBizMoney2().doubleValue()
+					+ "," + currentact.getActBizMoney().doubleValue() + ","
+					+ medicalafterDTO.getTotalcost().doubleValue() + ","
+					+ medicalafterDTO.getPayLine().doubleValue() + ","
+					+ medicalafterDTO.getInsurepay().doubleValue() + ","
+					+ medicalafterDTO.getHospitalpay().doubleValue() + ","
+					+ medicalafterDTO.getOutpay().doubleValue() + ","
+					+ medicalafterDTO.getCapay().doubleValue() + ","
+					+ medicalafterDTO.getBusinesspay().doubleValue()
+					+ ") as r from dual";
+
+			/*
+			 * sql="select func_calcassist(ds => v_ds, medicare_type =>
+			 * v_medicare_type, zbz_flag => v_zbz_flag, hospital_level =>
+			 * v_hospital_level, biz_type => v_biz_type, diagnose => v_diagnose,
+			 * zycount => v_zycount, single_flag => v_single_flag, single_count
+			 * => v_single_count, pay_summz => v_pay_summz, pay_sumzy =>
+			 * v_pay_sumzy, pay_total => v_pay_total, pay_beginline =>
+			 * v_pay_beginline, pay_medicare => v_pay_medicare, pay_hosadd =>
+			 * v_pay_hosadd, pay_out => v_pay_out, pay_dbbx => v_pay_dbbx,
+			 * pay_comm => v_pay_comm) as r from dual";
+			 */
+			/*
+			 * PAY_TOTAL in NUMBER, --总费用 PAY_BEGINLINE in NUMBER, --起付线
+			 * PAY_MEDICARE in NUMBER, --统筹 PAY_HOSADD in NUMBER, --医院补助 PAY_OUT
+			 * in NUMBER, --自费（目录外） PAY_DBBX in NUMBER, --大病保险 PAY_COMM in
+			 * NUMBER, --商业保险
+			 */
+			System.out.println(sql);
+			ExecutSQL executSQL = new ExecutSQL();
+			executSQL.setExecutsql(sql);
+			List<HashMap> maps = executSQLDAO.queryAll(executSQL);
+			String result = (String) maps.get(0).get("R");
+			System.out.println(result);
+			medicalafterDTO.setR(result);
+			BigDecimal asisstpay = new BigDecimal(result.split("-")[0]);
+			medicalafterDTO.setAsisstpay(asisstpay);
+			medicalafterDTO.setActId(currentact.getActId());
 		} catch (SQLException e) {
-		 
 			e.printStackTrace();
 		}
 		return medicalafterDTO;
 	}
+
 	public MemberBaseinfoDAO getMemberBaseinfoDAO() {
 		return memberBaseinfoDAO;
 	}
@@ -746,7 +711,5 @@ public class BaseinfoServiceImpl implements BaseinfoService {
 	public void setJzActDAO(JzActDAO jzActDAO) {
 		this.jzActDAO = jzActDAO;
 	}
-
-	
 
 }
