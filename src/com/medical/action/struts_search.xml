@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="search" extends="json-default" namespace="/page/search">
+		<interceptors>
+			<interceptor class="com.medical.interceptor.AuthorityInterceptor"
+				name="authority" />
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">/logout.jsp</result>
+			<result name="norole" type="redirect">/page/norole.jsp</result>
+		</global-results>
+		<action name="searchExecute" class="searchAction" method="findByterm">
+			<result name="success">/page/search/searchresult.jsp
+			</result>
+			<result name="search">/page/search/search.jsp
+			</result>
+		</action>
+		<action name="init" class="searchAction" method="init">
+			<result name="success">/page/search/search.jsp
+			</result>
+		</action>
+		<action name="findForBizlist" class="searchAction" method="findForBizlist">
+			<result name="success">/page/search/bizlist.jsp
+			</result>
+		</action>
+		<action name="searchmembersinit" class="searchAction" method="searchmembersinit">
+			<result name="success">/page/search/searchmembers.jsp
+			</result>
+		</action>
+		<action name="searchmembers" class="searchAction" method="searchmembers">
+			<result name="success">/page/search/searchmembers.jsp
+			</result>
+		</action>
+		<action name="searchMedicalMembersinit" class="searchAction"
+			method="searchMedicalMembersinit">
+			<result name="success">/page/search/searchmedicalmembers.jsp
+			</result>
+		</action>
+		<action name="searchMedicalMembers" class="searchAction"
+			method="searchMedicalMembers">
+			<result name="success">/page/search/searchmedicalmembers.jsp
+			</result>
+		</action>
+		<action name="searchMedicalMembersinit1" class="searchAction"
+			method="searchMedicalMembersinit1">
+			<result name="success">/page/search/searchmedicalmembers1.jsp
+			</result>
+		</action>
+		<action name="searchMedicalMembers1" class="searchAction"
+			method="searchMedicalMembers1">
+			<result name="success">/page/search/searchmedicalmembers1.jsp
+			</result>
+		</action>
+		<action name="searchMedicalMembersinit2" class="searchAction"
+			method="searchMedicalMembersinit2">
+			<result name="success">/page/search/searchmedicalmembers2.jsp
+			</result>
+		</action>
+		<action name="searchMedicalMembers2" class="searchAction"
+			method="searchMedicalMembers2">
+			<result name="success">/page/search/searchmedicalmembers2.jsp
+			</result>
+		</action>
+		<action name="searchMedicalMembers2" class="searchAction"
+			method="searchMedicalMembers2">
+			<result name="success">/page/search/searchmedicalmembers2.jsp
+			</result>
+		</action>
+		<action name="printbillone1" class="searchAction" method="printbillone1">
+			<result name="success">/page/billing/billingone1.jsp
+			</result>
+		</action>
+		<action name="viewfeelist" class="searchAction" method="viewfeelist">
+			<result name="success">/page/search/feelist.jsp</result>
+		</action>
+		<action name="viewpayinfo" class="searchAction" method="viewpayinfo">
+			<result name="success">/page/search/viewpayinfo.jsp</result>
+		</action>
+	</package>
+	<package name="stat" extends="jfreechart-default" namespace="/page/search">
+		<interceptors>
+			<interceptor class="com.medical.interceptor.AuthorityInterceptor"
+				name="authority" />
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">/logout.jsp</result>
+		</global-results>
+		<action name="distributionbyregioninit" class="searchAction"
+			method="distributionbyregioninit">
+			<result name="success">/page/search/distributionbyregion.jsp
+			</result>
+		</action>
+		<action name="distributionbyregion" class="searchAction"
+			method="distributionbyregion">
+			<result name="success">/page/search/distributionbyregion.jsp
+			</result>
+		</action>
+		<action name="distributionbyregionchart" class="searchAction"
+			method="distributionbyregionchart">
+			<result name="success" type="chart">
+				<param name="value">chart</param>
+				<param name="type">png</param>
+				<param name="width">640</param>
+				<param name="height">360</param>
+			</result>
+		</action>
+		<action name="distributionbyhospitalinit" class="searchAction"
+			method="distributionbyhospitalinit">
+			<result name="success">/page/search/distributionbyhospital.jsp
+			</result>
+		</action>
+		<action name="distributionbyhospital" class="searchAction"
+			method="distributionbyhospital">
+			<result name="success">/page/search/distributionbyhospital.jsp
+			</result>
+		</action>
+		<action name="distributionbyhospitalchart" class="searchAction"
+			method="distributionbyhospitalchart">
+			<result name="success" type="chart">
+				<param name="value">chart</param>
+				<param name="type">png</param>
+				<param name="width">640</param>
+				<param name="height">360</param>
+			</result>
+		</action>
+		<action name="distributionbyyearinit" class="searchAction"
+			method="distributionbyyearinit">
+			<result name="success">/page/search/distributionbyyear.jsp
+			</result>
+		</action>
+		<action name="distributionbyyear" class="searchAction" method="distributionbyyear">
+			<result name="success">/page/search/distributionbyyear.jsp
+			</result>
+		</action>
+		<action name="distributionbyyearchart" class="searchAction"
+			method="distributionbyyearchart">
+			<result name="success" type="chart">
+				<param name="value">chart</param>
+				<param name="type">png</param>
+				<param name="width">640</param>
+				<param name="height">360</param>
+			</result>
+		</action>
+		<action name="distributionbymoneyinit" class="searchAction"
+			method="distributionbymoneyinit">
+			<result name="success">/page/search/distributionbymoney.jsp
+			</result>
+		</action>
+		<action name="distributionbymoney" class="searchAction" method="distributionbymoney">
+			<result name="success">/page/search/distributionbymoney.jsp
+			</result>
+		</action>
+		<action name="distributionbymoneychart" class="searchAction"
+			method="distributionbymoneychart">
+			<result name="success" type="chart">
+				<param name="value">chart</param>
+				<param name="type">png</param>
+				<param name="width">640</param>
+				<param name="height">360</param>
+			</result>
+		</action>
+		<action name="distributionbysickoinit" class="searchAction"
+			method="distributionbysickoinit">
+			<result name="success">/page/search/distributionbysicko.jsp
+			</result>
+		</action>
+		<action name="distributionbysicko" class="searchAction" method="distributionbysicko">
+			<result name="success">/page/search/distributionbysicko.jsp
+			</result>
+		</action>
+		<action name="distributionbysickochart" class="searchAction"
+			method="distributionbysickochart">
+			<result name="success" type="chart">
+				<param name="value">chart</param>
+				<param name="type">png</param>
+				<param name="width">640</param>
+				<param name="height">360</param>
+			</result>
+		</action>
+		<action name="distributionbysickhinit" class="searchAction"
+			method="distributionbysickhinit">
+			<result name="success">/page/search/distributionbysickh.jsp
+			</result>
+		</action>
+		<action name="distributionbysickh" class="searchAction" method="distributionbysickh">
+			<result name="success">/page/search/distributionbysickh.jsp
+			</result>
+		</action>
+		<action name="distributionbysickhchart" class="searchAction"
+			method="distributionbysickhchart">
+			<result name="success" type="chart">
+				<param name="value">chart</param>
+				<param name="type">png</param>
+				<param name="width">640</param>
+				<param name="height">360</param>
+			</result>
+		</action>
+		<action name="distributionbypersoninit" class="searchAction"
+			method="distributionbypersoninit">
+			<result name="success">/page/search/distributionbyperson.jsp
+			</result>
+		</action>
+		<action name="distributionbyperson" class="searchAction"
+			method="distributionbyperson">
+			<result name="success">/page/search/distributionbyperson.jsp
+			</result>
+		</action>
+	</package>
+</struts>

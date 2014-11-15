@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+	<menu name="救助对象管理" url="">
+		<menu name="救助对象健康档案"
+			url="/medical/page/contentframe.jsp?url=baseinfo/healthsearch.jsp&amp;nav=救助对象管理>>救助对象健康档案"
+			target="mainFrame">
+		</menu>
+		<menu name="因病申请低保">
+			<menu name="审批"
+				url="/medical/page/contentframe.jsp?url=business/applysalvation/applysalinit.action&amp;nav=救助对象管理>>因病申请低保"
+				target="mainFrame">
+			</menu>
+			<menu name="审批查询"
+				url="/medical/page/contentframe.jsp?url=business/applysalvation/queryaspdone.jsp&amp;nav=救助对象管理>>因病申请低保"
+				target="mainFrame">
+			</menu>
+			<menu name="核对体检表"
+				url="/medical/page/contentframe.jsp?url=business/applysalvation/checkhealthrecordframeset.jsp&amp;nav=报销审批>>日常救助查询>>核对体检表"
+				target="mainFrame">
+			</menu>
+		</menu>
+		<menu name="医保信息核对">
+			<menu name="医保卡信息查询"
+				url="/medical/page/contentframe.jsp?url=check/checkQueryInit.action&amp;nav=救助对象管理>>医保信息核对>>医保卡信息查询"
+				target="mainFrame">
+			</menu>
+			<menu name="医保卡信息核对"
+				url="/medical/page/contentframe.jsp?url=check/checkSsnInit.action&amp;nav=救助对象管理>>医保信息核对>>医保卡信息核对"
+				target="mainFrame">
+			</menu>
+		</menu>
+	</menu>
+	<menu name="报销审批">
+		<menu name="医前救助审批">
+			<menu name="医前救助审批"
+				url="/medical/page/contentframe.jsp?url=business/queryPreMedicalInit.action&amp;nav=报销审批>>医前救助审批>>医前救助审批"
+				target="mainFrame">
+			</menu>
+			<menu name="医前救助查询"
+				url="/medical/page/contentframe.jsp?url=business/viewPreMedicalInit.action&amp;nav=报销审批>>医前救助审批>>医前救助查询"
+				target="mainFrame">
+			</menu>
+		</menu>
+		<menu name="日常救助审批">
+			<menu name="日常救助审批"
+				url="/medical/page/contentframe.jsp?url=business/chronic/checkchronicmemberinit.action&amp;nav=报销审批>>日常救助审批>>日常救助审批"
+				target="mainFrame">
+			</menu>
+			<menu name="日常救助查询"
+				url="/medical/page/contentframe.jsp?url=business/chronic/querychronicmembersdoneinit.action&amp;nav=报销审批>>日常救助查询>>日常救助查询"
+				target="mainFrame">
+			</menu>
+			<menu name="当前慢性病救助对象"
+				url="/medical/page/contentframe.jsp?url=business/chronic/querychroniccinit.action&amp;nav=报销审批>>日常救助查询>>当前慢性病救助对象"
+				target="mainFrame">
+			</menu>
+			<menu name="日常救助人数统计"
+				url="/medical/page/contentframe.jsp?url=business/chronic/chronicmemberstat.action&amp;nav=报销审批>>日常救助查询>>日常救助人数统计"
+				target="mainFrame">
+			</menu>	
+			<menu name="核对健康档案"
+				url="/medical/page/contentframe.jsp?url=business/chronic/checkhealthrecordframeset.jsp&amp;nav=报销审批>>日常救助查询>>核对健康档案"
+				target="mainFrame">
+			</menu>
+			<menu name="救助金发放管理"
+				url="/medical/page/contentframe.jsp?url=business/chronic/generatebillInit&amp;nav=报销审批>>日常救助查询>>救助金发放管理"
+				target="mainFrame">
+			</menu>
+			<menu name="救助金补发"
+				url="/medical/page/contentframe.jsp?url=business/chronic/querychronicinit.action&amp;nav=报销审批>>日常救助查询>>救助金补发"
+				target="mainFrame">
+			</menu>
+			<menu name="帐单明细查询"
+				url="/medical/page/contentframe.jsp?url=business/chronic/querychronicbilldetailinit.action&amp;nav=报销审批>>日常救助查询>>帐单明细查询"
+				target="mainFrame">
+			</menu>
+			<menu name="按救助病种统计 "
+				url="/medical/page/contentframe.jsp?url=business/chronic/querychronicstatinit.action&amp;nav=报销审批>>日常救助查询>>按救助病种统计"
+				target="mainFrame">
+			</menu>
+		</menu>
+		<menu name="临时救助审批">
+			<menu name="走访调查"
+				url="/medical/page/contentframe.jsp?url=emecheck/showEmeCheckViewsInit.action&amp;type=1&amp;nav=临时救助审批>>走访调查"
+				target="mainFrame">
+			</menu>
+			<menu name="临时救助审批"
+				url="/medical/page/contentframe.jsp?url=emecheck/emecheckapprovequery.jsp&amp;type=1&amp;nav=临时救助审批>>临时救助审批"
+				target="mainFrame">
+			</menu>
+		</menu>
+	</menu>
+	<menu name="医疗救助管理">
+		<menu name="门诊救助管理">
+			<menu name="救助对象查询"
+				url="/medical/page/contentframe.jsp?url=salvation/salvationQuery.action&amp;type=1&amp;nav=救助管理>>门诊救助管理>>救助对象查询"
+				target="mainFrame">
+			</menu>
+		</menu>
+		<menu name="住院救助管理">
+			<menu name="救助对象审核"
+				url="/medical/page/contentframe.jsp?url=salvation/initQueryPage.action&amp;type=2&amp;nav=住院救助管理>>救助对象审核"
+				target="mainFrame">
+			</menu>
+			<menu name="救助对象查询"
+				url="/medical/page/contentframe.jsp?url=salvation/salvationQuery.action&amp;type=2&amp;nav=救助管理>>住院救助管理>>救助对象查询"
+				target="mainFrame">
+			</menu>
+		</menu>
+	</menu>
+	<menu name="救助金对账">
+		<menu name="对账单明细查询 "
+			url="/medical/page/contentframe.jsp?url=search/searchMedicalMembersinit.action&amp;nav=救助金对账>>对账单明细查询 "
+			target="mainFrame">
+		</menu>
+		<menu name="对账单统计"
+			url="/medical/page/contentframe.jsp?url=business/printbilloneinit.action&amp;type=&amp;nav=救助金对账>>本月对账单统计"
+			target="mainFrame">
+		</menu>
+		<menu name="药店对账单明细查询 "
+			url="/medical/page/contentframe.jsp?url=search/searchMedicalMembersinit1.action&amp;nav=救助金对账>>药店对账单明细查询 "
+			target="mainFrame">
+		</menu>
+		<menu name="药店对账单统计"
+			url="/medical/page/contentframe.jsp?url=billing/billingone1.jsp&amp;type=&amp;nav=救助金对账>>药店本月对账单统计"
+			target="mainFrame">
+		</menu>
+		<menu name="购药账单查询"
+			url="/medical/page/contentframe.jsp?url=search/searchMedicalMembersinit2.action&amp;type=&amp;nav=救助金对账>>购药账单查询"
+			target="mainFrame">
+		</menu>
+	</menu>
+	<menu name="信息查询">
+		<menu name="救助对象查询"
+			url="/medical/page/contentframe.jsp?url=search/searchmembersinit.action&amp;nav=信息查询>>救助对象查询"
+			target="mainFrame">
+		</menu>
+		<menu name="救助对象健康信息"
+			url="/medical/page/contentframe.jsp?url=detail.action?cur_page=1&amp;type=2&amp;nav=救助对象管理>>救助对象健康信息"
+			target="mainFrame">
+		</menu>
+		<menu name="信息查询"
+			url="/medical/page/contentframe.jsp?url=search/searchFrame.jsp&amp;nav=信息查询>>信息查询"
+			target="mainFrame">
+		</menu>
+	</menu>
+	<menu name="统计分析">
+		<menu name="救助对象统计"
+			url="/medical/page/contentframe.jsp?url=search/findForBizlist.action&amp;nav=统计分析>>救助对象统计"
+			target="mainFrame">
+		</menu>
+		<menu name="就医情况汇总表"
+			url="/medical/page/contentframe.jsp?url=search/distributionbypersoninit.action&amp;nav=统计分析>>就医情况汇总表"
+			target="mainFrame">
+		</menu>
+		<menu name="地区分布情况统计表"
+			url="/medical/page/contentframe.jsp?url=search/distributionbyregioninit.action&amp;nav=统计分析>>地区分布情况统计表"
+			target="mainFrame">
+		</menu>
+		<menu name="就医医院分布情况统计表"
+			url="/medical/page/contentframe.jsp?url=search/distributionbyhospitalinit.action&amp;nav=统计分析>>就医医院分布情况统计表"
+			target="mainFrame">
+		</menu>
+		<menu name="各年度救助人数及资金统计表"
+			url="/medical/page/contentframe.jsp?url=search/distributionbyyearinit.action&amp;nav=统计分析>>各年度救助人数及资金统计表"
+			target="mainFrame">
+		</menu>
+		<menu name="救助资金使用情况"
+			url="/medical/page/contentframe.jsp?url=search/distributionbymoneyinit.action&amp;nav=统计分析>>救助资金使用情况"
+			target="mainFrame">
+		</menu>
+		<menu name="门诊救助金使用情况"
+			url="/medical/page/contentframe.jsp?url=search/distributionbysickoinit.action&amp;nav=统计分析>>门诊救助金使用情况"
+			target="mainFrame">
+		</menu>
+		<menu name="住院救助金使用情况"
+			url="/medical/page/contentframe.jsp?url=search/distributionbysickhinit.action&amp;nav=统计分析>>住院救助金使用情况"
+			target="mainFrame">
+		</menu>
+	</menu>
+	<menu name="医疗救助手工报销审批">
+		<menu name="手工报销审批"
+			url="/medical/page/contentframe.jsp?url=business/manualquerymember.jsp&amp;nav=医疗救助手动报销审批>>手工报销审批"
+			target="mainFrame">
+		</menu>
+		<menu name="手工报销审批查询"
+			url="/medical/page/contentframe.jsp?url=business/querymanualinit.action&amp;nav=医疗救助手动报销审批>>手工报销审批查询"
+			target="mainFrame">
+		</menu>
+	</menu>
+	<menu name="农合医后报销审批">
+		<menu name="审批"
+			url="/medical/page/contentframe.jsp?url=medicalafter/afterquerymemberinit.action&amp;nav=农合医后报销审批>>审批"
+			target="mainFrame">
+		</menu>
+		<menu name="查询"
+			url="/medical/page/contentframe.jsp?url=medicalafter/queryafterinit.action&amp;nav=农合医后报销审批>>查询"
+			target="mainFrame">
+		</menu>
+	</menu>
+	<menu name="社会救助卡预览">
+		<menu name="日常救助制卡预览"
+			url="/medical/page/contentframe.jsp?url=business/chronic/querychronicmemberscard.jsp&amp;nav=社会救助卡预览>>日常救助制卡预览"
+			target="mainFrame">
+		</menu>
+	</menu>
+</menu>

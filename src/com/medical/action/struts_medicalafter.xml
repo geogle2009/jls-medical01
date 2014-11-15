@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="medicalafter" extends="json-default" namespace="/page/medicalafter">
+		<interceptors>
+			<interceptor class="com.medical.interceptor.AuthorityInterceptor"
+				name="authority" />
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">/logout.jsp</result>
+			<result name="norole" type="redirect">/page/norole.jsp</result>
+		</global-results>
+		
+		<action name="afterquerymemberinit" class="medicalafterAction"
+			method="afterquerymemberinit">
+			<result name="success">/page/medicalafter/afterquerymember.jsp
+			</result>
+			<result name="result">/page/medicalafter/error.jsp</result>
+		</action>
+		<action name="afterquerymember" class="medicalafterAction"
+			method="afterquerymember">
+			<result name="success">/page/medicalafter/afterviewmember.jsp
+			</result>
+			<result name="result">/page/medicalafter/afterquerymember.jsp</result>
+		</action>
+		<action name="afterapplyinit" class="medicalafterAction"
+			method="afterapplyinit">
+			<result name="success">/page/medicalafter/afterapply.jsp
+			</result>
+		</action>
+		<action name="afterapply" class="medicalafterAction" method="afterapply">
+			<result name="success">/page/medicalafter/afterapplyview.jsp
+			</result>
+		</action>
+		<action name="queryafterinit" class="medicalafterAction"
+			method="queryafterinit">
+			<result name="success">
+				/page/medicalafter/querymedicalafter.jsp
+            </result>
+			<result name="result">
+				/page/medicalafter/error.jsp
+            </result>
+		</action>
+		<action name="queryafter" class="medicalafterAction"
+			method="queryafter">
+			<result name="success">
+				/page/medicalafter/querymedicalafter.jsp
+            </result>
+         </action>
+         <action name="countassist" class="medicalafterAction"
+			method="countassist">
+			<result type="json">
+				<param name="root">
+					result
+				</param>
+				<param name="ignoreHierarchy">
+					false
+				</param>
+				<param name="noCache">
+					true
+				</param>
+				<param name="excludeNullProperties">
+					true
+				</param>
+			</result>
+         </action>
+	</package>
+</struts>

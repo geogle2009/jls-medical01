@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<include file="struts-default.xml" />
+	<constant name="struts.locale" value="zh_CN" />
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.freemarker.templatesCache" value="true"/>
+	<constant name="struts.ui.theme" value="simple" /> 
+	<constant name="struts.ui.templateDir" value="template" /> 
+	<constant name="struts.ui.templateSuffix" value="ftl" />
+	<package name="medical-non-authority" extends="struts-default">
+		<action name="login" class="loginAction" method="login">
+			<result name="success" type="chain">index</result>
+			<result name="error">login.jsp</result>
+			<result name="input">login.jsp</result>
+		</action>
+	</package>
+	<package name="medical-authority" extends="struts-default">
+		<interceptors>
+			<interceptor class="com.medical.interceptor.AuthorityInterceptor"
+				name="authority" />
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">/logout.jsp</result>
+			<result name="norole" type="redirect">/page/norole.jsp</result>
+		</global-results>
+		<action name="index" class="indexAction">
+			<result name="success">/page/index.jsp</result>
+		</action>
+		<action name="querymenu" class="menuAction"
+			method="queryMenu">
+			<result name="success">/page/menu.jsp</result>
+		</action>
+		<action name="detail" class="detailAction"
+			method="detail">
+			<result name="success">/page/detail.jsp</result>
+		</action>
+		<action name="detailone" class="detailAction"
+			method="detailone">
+			<result name="success">/page/detail.jsp</result>
+		</action>
+		<action name="viewBiz" class="detailAction"
+			method="viewBiz">
+			<result name="success">/page/viewBiz.jsp</result>
+		</action>
+		<action name="downloadExcel" class="downloadExcelAction">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">${fileName}</param>
+				<param name="inputName">excelFile</param>
+			</result>
+		</action>
+	</package>
+	<include file="com/medical/action/struts_bizcheck.xml" />
+	<include file="com/medical/action/struts_business.xml" />
+	<include file="com/medical/action/struts_search.xml" />
+	<include file="com/medical/action/struts_baseinfo.xml" />
+	<include file="com/medical/action/struts_emecheck.xml" />
+	<include file="com/medical/action/struts_chronic.xml" />
+	<include file="com/medical/action/struts_check.xml" />
+	<include file="com/medical/action/struts_medicalafter.xml"/>
+</struts>

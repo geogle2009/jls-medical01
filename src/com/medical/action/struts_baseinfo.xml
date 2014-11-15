@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="baseinfo" extends="json-default" namespace="/page/baseinfo">
+		<interceptors>
+			<interceptor class="com.medical.interceptor.AuthorityInterceptor"
+				name="authority" />
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">/logout.jsp</result>
+		</global-results>
+		<action name="healthSearch" class="baseinfoAction"
+			method="healthSearch">
+			<result name="success">/page/baseinfo/healthsearch.jsp
+			</result>
+		</action>
+		<action name="displayCard" class="baseinfoAction"
+			method="displayCard">
+			<result name="success">/page/baseinfo/baseinfocard.jsp
+			</result>
+		</action>
+	</package>
+</struts>

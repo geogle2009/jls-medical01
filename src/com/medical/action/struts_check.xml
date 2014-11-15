@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="check" extends="json-default" namespace="/page/check">
+		<interceptors>
+			<interceptor class="com.medical.interceptor.AuthorityInterceptor"
+				name="authority" />
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">/logout.jsp</result>
+			<result name="norole" type="redirect">/page/norole.jsp</result>
+		</global-results>
+		<action name="checkQueryInit" class="checkAction" method="checkQueryInit">
+			<result name="success">/page/check/check_query.jsp
+			</result>
+		</action>
+		<action name="checkQuery" class="checkAction" method="checkQuery">
+			<result name="success">/page/check/check_query.jsp
+			</result>
+		</action>
+		<action name="checkSsnInit" class="checkAction" method="checkSsnInit">
+			<result name="success">/page/check/check_ssn.jsp
+			</result>
+		</action>
+		<action name="checkSsn" class="checkAction" method="checkSsn">
+			<result name="success">/page/check/check_ssn.jsp
+			</result>
+		</action>
+		<action name="installSsnInit" class="checkAction" method="installSsnInit">
+			<result name="success">/page/check/view_install_ssn.jsp
+			</result>
+		</action>
+		<action name="installSsn" class="checkAction" method="installSsn">
+		<result type="json">
+				<param name="root">
+					result
+                </param>
+				<param name="ignoreHierarchy">
+					false
+                </param>
+				<param name="noCache">
+					true
+                </param>
+				<param name="excludeNullProperties">
+					true
+                </param>
+			</result>
+		</action>
+	</package>
+</struts>

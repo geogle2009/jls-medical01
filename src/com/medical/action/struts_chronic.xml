@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="chronic" extends="json-default" namespace="/page/business/chronic">
+		<interceptors>
+			<interceptor class="com.medical.interceptor.AuthorityInterceptor"
+				name="authority" />
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault">
+		</default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">
+				/logout.jsp
+			</result>
+			<result name="norole" type="redirect">/page/norole.jsp</result>
+		</global-results>
+		<action name="checkchronicmemberinit" class="chronicAction"
+			method="checkChronicMemberInit">
+			<result name="1">
+				/page/business/chronic/checkchronicmember.jsp
+			</result>
+			<result name="2">
+				/page/business/chronic/querychronicmembers.jsp
+			</result>
+			<result name="3">
+				/page/business/chronic/querychronicmembers.jsp
+			</result>
+			<result name="4">
+				/page/business/chronic/result.jsp
+			</result>
+		</action>
+		<action name="checkchronicmember" class="chronicAction" method="checkChronicMember">
+			<result name="success">
+				/page/business/chronic/checkview.jsp
+			</result>
+		</action>
+		<action name="approvechronicmemberinit" class="chronicAction"
+			method="approveChronicMemberInit">
+			<result name="success">
+				/page/business/chronic/approvechronicmember.jsp
+			</result>
+			<result name="result">
+				/page/business/chronic/viewapprovelist1.jsp
+			</result>
+			<result name="dresult">
+				/page/business/chronic/result.jsp
+			</result>
+		</action>
+		<action name="approvechronicmember" class="chronicAction"
+			method="approveChronicMember">
+			<result name="success">
+				/page/business/chronic/approveresult.jsp
+			</result>
+			<result name="input">
+				/page/business/chronic/approvechronicmember.jsp
+			</result>
+		</action>
+		<action name="querychronicmembers" class="chronicAction"
+			method="queryChronicMembers">
+			<result name="success">
+				/page/business/chronic/querychronicmembers.jsp
+			</result>
+		</action>
+		<action name="querychronicmembersdoneinit" class="chronicAction"
+			method="queryChronicMembersDoneInit">
+			<result name="success">
+				/page/business/chronic/querychronicmembersdone.jsp
+			</result>
+		</action>
+		<action name="querychronicmembersdone" class="chronicAction"
+			method="queryChronicMembersDone">
+			<result name="success">
+				/page/business/chronic/querychronicmembersdone.jsp
+			</result>
+		</action>
+		<action name="querychronicmemberscard" class="chronicAction"
+			method="queryChronicMembersCard">
+			<result name="success">
+				/page/business/chronic/querychronicmemberscard.jsp
+			</result>
+		</action>
+		<action name="viewcard" method="viewcard" class="chronicAction">
+			<result name="success">
+				/page/business/chronic/viewcard.jsp
+			</result>
+		</action>
+		<action name="viewapprovelist" method="viewApproveList" class="chronicAction">
+			<result name="success">
+				/page/business/chronic/viewapprovelist.jsp
+			</result>
+		</action>
+		<action name="checkhealthrecordinit" method="checkHealthrecordInit"
+			class="chronicAction">
+			<result name="success">
+				/page/business/chronic/checkhealthrecord.jsp
+			</result>
+		</action>
+		<action name="querypersonbyssn" method="queryPersonBySsn"
+			class="chronicAction">
+			<result type="json">
+				<param name="root">
+					result
+				</param>
+				<param name="ignoreHierarchy">
+					false
+				</param>
+				<param name="noCache">
+					true
+				</param>
+				<param name="excludeNullProperties">
+					true
+				</param>
+			</result>
+		</action>
+		<action name="checkhealthrecord" method="checkHealthrecord"
+			class="chronicAction">
+			<result type="json">
+				<param name="root">
+					result
+				</param>
+				<param name="ignoreHierarchy">
+					false
+				</param>
+				<param name="noCache">
+					true
+				</param>
+				<param name="excludeNullProperties">
+					true
+				</param>
+			</result>
+		</action>
+		<action name="generatebillInit" method="generatebillInit"
+			class="chronicBillAction">
+			<result name="success">/page/business/chronic/generatebill.jsp</result>
+			<result name="result">/page/business/chronic/result.jsp</result>
+		</action>
+		<action name="saveGeneratebill" method="saveGeneratebill"
+			class="chronicBillAction">
+			<result name="input">/page/business/chronic/generatebillerror.jsp
+			</result>
+			<result name="success">/page/business/chronic/generatebillerror.jsp
+			</result>
+		</action>
+		<action name="querychronicbilldetailinit" method="querychronicbilldetailinit"
+			class="chronicBillAction">
+			<result name="success">
+				/page/business/chronic/querychronicbilldetail.jsp
+			</result>
+		</action>
+		<action name="querychronicbilldetail" method="querychronicbilldetail"
+			class="chronicBillAction">
+			<result name="success">
+				/page/business/chronic/querychronicbilldetail.jsp
+			</result>
+		</action>
+		<action name="querychronic" method="querychronic" class="chronicBillAction">
+			<result name="success">
+				/page/business/chronic/querychronic.jsp
+			</result>
+		</action>
+		<action name="querychronicinit" method="querychronicinit"
+			class="chronicBillAction">
+			<result name="success">
+				/page/business/chronic/querychronic.jsp
+			</result>
+			<result name="result">
+				/page/business/chronic/result.jsp
+			</result>
+		</action>
+		<action name="chronichandleinit" method="chronichandleinit"
+			class="chronicBillAction">
+			<result name="success">
+				/page/business/chronic/chronichandle.jsp
+			</result>
+			<result name="result">
+				/page/business/chronic/result1.jsp
+			</result>
+		</action>
+		<action name="chronichandle" method="chronichandle" class="chronicBillAction">
+			<result name="success">
+				/page/business/chronic/chronicresult.jsp
+			</result>
+		</action>
+		<action name="chronicmemberstat" method="chronicmemberstat"
+			class="chronicAction">
+			<result name="success">
+				/page/business/chronic/chronicmemberstat.jsp
+			</result>
+		</action>
+		<action name="querychronicstatinit" method="querychronicstatinit"
+			class="chronicAction">
+			<result name="success">
+				/page/business/chronic/querychronicstat.jsp
+			</result>
+		</action>
+		<action name="querychroniccinit" method="querychroniccinit"
+			class="chronicAction">
+			<result name="success">
+				/page/business/chronic/querychronicc.jsp
+			</result>
+		</action>
+		<action name="querychronicc" method="querychronicc"
+			class="chronicAction">
+			<result name="success">
+				/page/business/chronic/querychronicc.jsp
+			</result>
+		</action>
+	</package>
+	<package name="applysalvation" extends="json-default"
+		namespace="/page/business/applysalvation">
+		<interceptors>
+			<interceptor class="com.medical.interceptor.AuthorityInterceptor"
+				name="authority" />
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault">
+		</default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">
+				/logout.jsp
+			</result>
+		</global-results>
+		<action name="applysalinit" method="applySalInit" class="chronicAction">
+			<result name="1">
+				/page/business/applysalvation/checkview.jsp
+			</result>
+			<result name="2">
+				/page/business/applysalvation/queryasp.jsp
+			</result>
+			<result name="3">
+				/page/business/applysalvation/queryasp.jsp
+			</result>
+			<result name="success">
+				/page/business/applysalvation/result.jsp
+			</result>
+		</action>
+		<action name="queryapplysalperson" method="queryApplySalPerson"
+			class="chronicAction">
+			<result name="success">
+				/page/business/applysalvation/checkview.jsp
+			</result>
+		</action>
+		<action name="approveaspinit" method="approveAspInit" class="chronicAction">
+			<result name="success">
+				/page/business/applysalvation/aspapprove.jsp
+			</result>
+			<result name="result">
+				/page/business/applysalvation/result.jsp
+			</result>
+		</action>
+		<action name="approveasp" method="approveAsp" class="chronicAction">
+			<result name="success">
+				/page/business/applysalvation/aspapproveview.jsp
+			</result>
+		</action>
+		<action name="viewasp" method="viewAsp" class="chronicAction">
+			<result name="success">
+				/page/business/applysalvation/aspapproveview.jsp
+			</result>
+		</action>
+		<action name="queryasp" method="queryAsp" class="chronicAction">
+			<result name="success">
+				/page/business/applysalvation/queryasp.jsp
+			</result>
+		</action>
+		<action name="queryaspdone" method="queryAspDone" class="chronicAction">
+			<result name="success">
+				/page/business/applysalvation/queryaspdone.jsp
+			</result>
+		</action>
+		<action name="printasp" method="printAsp" class="chronicAction"></action>
+		<action name="checkaspinit" method="checkAspInit" class="chronicAction">
+			<result name="success">
+				/page/business/applysalvation/checkhealthrecord.jsp
+			</result>
+		</action>
+		<action name="checkasp" method="checkAsp" class="chronicAction">
+			<result type="json">
+				<param name="root">
+					result
+				</param>
+				<param name="ignoreHierarchy">
+					false
+				</param>
+				<param name="noCache">
+					true
+				</param>
+				<param name="excludeNullProperties">
+					true
+				</param>
+			</result>
+		</action>
+		<action name="queryaspbyssn" method="queryAspBySsn" class="chronicAction">
+			<result type="json">
+				<param name="root">
+					result
+				</param>
+				<param name="ignoreHierarchy">
+					false
+				</param>
+				<param name="noCache">
+					true
+				</param>
+				<param name="excludeNullProperties">
+					true
+				</param>
+			</result>
+		</action>
+		<action name="delfile" method="delfile" class="chronicAction">
+			<result type="json">
+				<param name="root">
+					result
+				</param>
+				<param name="ignoreHierarchy">
+					false
+				</param>
+				<param name="noCache">
+					true
+				</param>
+				<param name="excludeNullProperties">
+					true
+				</param>
+			</result>
+		</action>
+	</package>
+</struts>

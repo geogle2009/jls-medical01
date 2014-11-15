@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.logicalcobwebs.proxool.ProxoolDriver" />
+		<property name="url" value="proxool.yljzn" />
+	</bean>
+
+	<!-- "WEB-INF/classes/sqlMapConfig.xml"  sqlMapConfig.xml -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="WEB-INF/classes/sqlMapConfig.xml" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean id="executSQLDAO" class="com.medical.dao.ExecutSQLDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="sysTEmployeeDAO" class="com.medical.dao.SysTEmployeeDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="memberBaseinfoDAO" class="com.medical.dao.MemberBaseinfoDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="icd10DAO" class="com.medical.dao.Icd10DAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="dmBizdeptDAO" class="com.medical.dao.DmBizdeptDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="jzBizDAO" class="com.medical.dao.JzBizDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="jzPaylistDAO" class="com.medical.dao.JzPaylistDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="vbSearchinfoDAO" class="com.medical.dao.VbSearchinfoDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="jzBizcheckDAO" class="com.medical.dao.JzBizcheckDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="jzEmecheckDAO" class="com.medical.dao.JzEmecheckDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="sysTOrganizationDAO" class="com.medical.dao.SysTOrganizationDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="jzActDAO" class="com.medical.dao.JzActDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="jzBizHistoryDAO" class="com.medical.dao.JzBizHistoryDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="jzManualDAO" class="com.medical.dao.JzManualDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="jzChronicapproveDAO" class="com.medical.dao.JzChronicapproveDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="jzChronicbillDAO" class="com.medical.dao.JzChronicbillDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="jzAnnexDAO" class="com.medical.dao.JzAnnexDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="jzChronicstatusDAO" class="com.medical.dao.JzChronicstatusDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="jzAspapproveDAO" class="com.medical.dao.JzAspapproveDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="jzChronicbillemployDAO" class="com.medical.dao.JzChronicbillemployDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="testSsnDAO" class="com.medical.dao.TestSsnDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+	<bean id="jzMedicalafterDAO" class="com.medical.dao.JzMedicalafterDAOImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+</beans>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<settings useStatementNamespaces="true" />
+	<sqlMap resource="com/medical/map/ExeuteSQL.xml" />
+	<sqlMap resource="com/medical/map/JZ_BIZ_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/JZ_PAYLIST_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/MEMBER_BASEINFO_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/SYS_T_EMPLOYEE_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/SYS_T_ORGANIZATION_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/DM_BIZDEPT_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/ICD10_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/VB_SEARCHINFO_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/JZ_BIZCHECK_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/JZ_EMECHECK_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/JZ_BIZ_HISTORY_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/JZ_ACT_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/JZ_MANUAL_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/JZ_CHRONICAPPROVE_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/JZ_CHRONICBILL_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/JZ_CHRONICSTATUS_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/JZ_ANNEX_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/JZ_ASPAPPROVE_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/JZ_CHRONICBILLEMPLOY_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/TEST_SSN_SqlMap.xml" />
+	<sqlMap resource="com/medical/map/JZ_MEDICALAFTER_SqlMap.xml" />
+</sqlMapConfig>

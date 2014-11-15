@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ExeuteSQL">
+	<typeAlias alias="executSQL" type="com.medical.model.ExecutSQL" />
+	<statement id="queryRow" parameterClass="executSQL"
+		resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[SELECT * FROM ( SELECT A.*, ROWNUM RN FROM ( $executsql$ ) A WHERE ROWNUM <= $end$) WHERE RN > $start$]]>      
+    </statement>
+	<statement id="queryAll" parameterClass="executSQL"
+		resultClass="java.util.HashMap" remapResults="true">
+		<![CDATA[$executsql$]]>      
+    </statement>
+	<statement id="queryCnt" parameterClass="executSQL"
+		resultClass="int" remapResults="true">
+		<![CDATA[select count(1) as cnt from ( $executsql$)]]>
+	</statement>
+	<update id="updateSQL" parameterClass="executSQL">
+		<![CDATA[$executsql$]]>
+	</update>
+	<parameterMap id="countAssistParams" class="java.util.Map">
+		<parameter property="DS" jdbcType="Integer" javaType="java.lang.Integer"
+			mode="IN" />
+		<parameter property="MEDICARE_TYPE" jdbcType="Integer"
+			javaType="java.lang.Integer" mode="IN" />
+		<parameter property="ZBZ_FLAG" jdbcType="Integer" javaType="java.lang.Integer"
+			mode="IN" />
+		<parameter property="HOSPITAL_LEVEL" jdbcType="Integer"
+			javaType="java.lang.Integer" mode="IN" />
+		<parameter property="BIZ_TYPE" jdbcType="Integer" javaType="java.lang.Integer"
+			mode="IN" />
+		<parameter property="DIAGNOSE" jdbcType="Integer" javaType="java.lang.Integer"
+			mode="IN" />
+		<parameter property="ZYCOUNT" jdbcType="Integer" javaType="java.lang.Integer"
+			mode="IN" />
+		<parameter property="SINGLE_FLAG" jdbcType="Integer"
+			javaType="java.lang.Integer" mode="IN" />
+		<parameter property="SINGLE_COUNT" jdbcType="Integer"
+			javaType="java.lang.Integer" mode="IN" />
+		<parameter property="PAY_SUMMZ" jdbcType="Double" javaType="java.lang.Double"
+			mode="IN" />
+		<parameter property="PAY_SUMZY" jdbcType="Double" javaType="java.lang.Double"
+			mode="IN" />
+		<parameter property="PAY_TOTAL" jdbcType="Double" javaType="java.lang.Double"
+			mode="IN" />
+		<parameter property="PAY_BEGINLINE" jdbcType="Double"
+			javaType="java.lang.Double" mode="IN" />
+		<parameter property="PAY_MEDICARE" jdbcType="Double"
+			javaType="java.lang.Double" mode="IN" />
+		<parameter property="PAY_HOSADD" jdbcType="Double" javaType="java.lang.Double"
+			mode="IN" />
+		<parameter property="PAY_OUT" jdbcType="Double" javaType="java.lang.Double"
+			mode="IN" />
+		<parameter property="PAY_DBBX" jdbcType="Double" javaType="java.lang.Double"
+			mode="IN" />
+		<parameter property="PAY_COMM" jdbcType="Double" javaType="java.lang.Double"
+			mode="IN" />
+		<parameter property="PAY_ASSIST" jdbcType="Double" javaType="java.lang.Double"
+			mode="OUT" />
+		<parameter property="CALC_DESC" jdbcType="VARCHAR" javaType="java.lang.String"
+			mode="OUT" />
+	</parameterMap>
+	<procedure id="countAssist" parameterMap="countAssistParams" resultClass="java.util.Map">
+      <![CDATA[{call proc_calcassist(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}]]>
+  </procedure>
+</sqlMap>

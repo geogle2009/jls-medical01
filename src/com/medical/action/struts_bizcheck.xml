@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="salvation" extends="json-default" namespace="/page/salvation">
+		<interceptors>
+			<interceptor class="com.medical.interceptor.AuthorityInterceptor"
+				name="authority" />
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">/logout.jsp</result>
+			<result name="norole" type="redirect">/page/norole.jsp</result>
+		</global-results>
+		<action name="initQueryPage" class="bizCheckAction"
+			method="initQueryPage">
+			<result name="success">/page/salvation/bizcheckquery.jsp
+			</result>
+		</action>
+		<action name="initBizcheck" class="bizCheckAction"
+			method="initBizcheck">
+			<result name="success">/page/salvation/bizchecksave.jsp
+			</result>
+		</action>
+		<action name="saveBizcheck" class="bizCheckAction"
+			method="saveBizcheck">
+			<result name="success">/page/salvation/bizchecksuccess.jsp
+			</result>
+			<result name="error">/page/salvation/bizchecksave.jsp
+			</result>
+		</action>
+		<action name="salvationQuery" class="bizCheckAction"
+			method="salvationQuery">
+			<result name="success">
+				/page/salvation/salvationquery.jsp
+		</result>
+		</action>
+	</package>
+</struts>

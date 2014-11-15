@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ftp>
+	<property name="username">upload</property>
+	<property name="userpwd">upload20091224</property>
+	<property name="remoteip">10.10.10.2</property>
+	<property name="remoteport">21</property>
+	<property name="remotedir">medicalupload</property>
+</ftp>

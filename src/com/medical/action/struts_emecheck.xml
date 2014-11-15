@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="emecheck" extends="json-default" namespace="/page/emecheck">
+		<interceptors>
+			<interceptor class="com.medical.interceptor.AuthorityInterceptor"
+				name="authority" />
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">/logout.jsp</result>
+			<result name="norole" type="redirect">/page/norole.jsp</result>
+		</global-results>
+		<action name="showEmeCheckViews" class="emeCheckAction"
+			method="showEmeCheckViews">
+			<result name="success">
+				emecheckviewquery.jsp
+		</result>
+		</action>
+		<action name="showEmeCheckViewsInit" class="emeCheckAction"
+			method="showEmeCheckViewsInit">
+			<result name="success">
+				emecheckviewquery.jsp
+		</result>
+			<result name="error">
+				error.jsp
+		</result>
+		</action>
+		<action name="showEmeCheckApproves" class="emeCheckAction"
+			method="showEmeCheckApproves">
+			<result name="success">
+				emecheckapprovequery.jsp
+		</result>
+		</action>
+		<action name="saveInterview" class="emeCheckAction"
+			method="saveInterview">
+			<result name="success" type="redirect">
+				success.jsp
+			</result>
+		</action>
+		<action name="interview" class="emeCheckAction"
+			method="interview">
+			<result name="success">
+				emecheckview.jsp
+			</result>
+			<result name="result">
+				success.jsp
+			</result>
+		</action>
+		<action name="saveEmecheckapproves" class="emeCheckAction"
+			method="saveEmecheckapproves">
+			<result name="success" type="redirect">
+				success.jsp
+			</result>
+		</action>
+		<action name="emecheckapproves" class="emeCheckAction"
+			method="emecheckapproves">
+			<result name="success">
+				emecheckapprove.jsp
+			</result>
+			<result name="result">
+			success.jsp
+			</result>
+		</action>
+	</package>
+</struts>

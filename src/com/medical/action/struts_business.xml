@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="business" extends="json-default" namespace="/page/business">
+		<interceptors>
+			<interceptor class="com.medical.interceptor.AuthorityInterceptor"
+				name="authority" />
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault">
+		</default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">
+				/logout.jsp
+            </result>
+            <result name="norole" type="redirect">/page/norole.jsp</result>
+		</global-results>
+		<action name="querySickname" class="businessAction" method="querySickname">
+			<result type="json">
+				<param name="root">
+					sicknames
+                </param>
+			</result>
+		</action>
+		<action name="querySickname1" class="businessAction" method="querySickname1">
+			<result type="json">
+				<param name="root">
+					sicknames
+                </param>
+			</result>
+		</action>
+		<action name="queryMedicalPerson" class="businessAction"
+			method="queryMedicalPerson">
+			<result name="outpatientfortown">
+				/page/business/outpatientfortown.jsp
+            </result>
+			<result name="outpatientforcountry">
+				/page/business/outpatientforcountry.jsp
+            </result>
+			<result name="hospitalfortown">
+				/page/business/hospitalfortown.jsp
+            </result>
+			<result name="hospitalforcountry">
+				/page/business/hospitalforcountry.jsp
+            </result>
+			<result name="noresult">
+				/page/business/noresult.jsp
+            </result>
+		</action>
+		<action name="queryMedicalFamily" class="businessAction"
+			method="queryMedicalFamily">
+			<result name="success">
+				/page/business/memberinfolist.jsp
+            </result>
+			<result name="input">
+				/page/business/querymedicalperson.jsp
+            </result>
+		</action>
+		<action name="saveOutpatientfortown" class="businessAction"
+			method="saveOutpatientfortown">
+			<result name="success">
+				/page/business/success-window.jsp
+            </result>
+			<result name="input">
+				/page/business/input.jsp
+            </result>
+		</action>
+		<action name="saveOutpatientfortowninit" class="businessAction"
+			method="saveOutpatientfortowninit">
+			<result name="outpatientfortown-edit">
+				/page/business/outpatientfortown-edit.jsp
+			</result>
+		</action>
+		<action name="saveHospitalfortown" class="businessAction"
+			method="saveHospitalfortown">
+			<result name="success">
+				/page/business/success-window.jsp
+            </result>
+			<result name="input">
+				/page/business/input.jsp
+            </result>
+		</action>
+		<action name="saveHospitalfortowninit" class="businessAction"
+			method="saveHospitalfortowninit">
+			<result name="hospitalfortown-edit">
+				/page/business/hospitalfortown-edit.jsp
+            </result>
+		</action>
+		<action name="viewOutpatientfortown" class="businessAction"
+			method="viewOutpatientfortown">
+			<result name="success">
+				/page/business/outpatientfortown-view.jsp
+			</result>
+		</action>
+		<action name="viewHospitalfortown" class="businessAction"
+			method="viewHospitalfortown">
+			<result name="success">
+				/page/business/hospitalfortown-view.jsp
+            </result>
+		</action>
+		<action name="cancelBiz" class="businessAction" method="cancelBiz">
+			<result name="outpatientfortown">
+				/page/business/outpatientfortown.jsp
+            </result>
+			<result name="outpatientforcountry">
+				/page/business/outpatientforcountry.jsp
+            </result>
+			<result name="hospitalfortown">
+				/page/business/hospitalfortown.jsp
+            </result>
+			<result name="hospitalforcountry">
+				/page/business/hospitalforcountry.jsp
+            </result>
+			<result name="bizrecord">
+				/page/business/bizrecord.jsp
+            </result>
+			<result name="success">
+				/page/business/success.jsp
+            </result>
+			<result name="city">
+				/page/business/success-count.jsp
+            </result>
+			<result name="premedical">
+				/page/business/premedicalapprove.jsp
+            </result>
+			<result name="dailymedical">
+				/page/business/dailymedicalapprove.jsp
+            </result>
+		</action>
+		<action name="countBiz" class="businessAction" method="countBiz">
+			<result name="success">
+				/page/business/success-count.jsp
+            </result>
+		</action>
+		<action name="queryBusiByCityInit" class="businessAction"
+			method="queryBusiByCityInit">
+			<result name="success">
+				/page/business/querybusibycity.jsp
+            </result>
+			<result name="result">
+				/page/business/noresult.jsp
+            </result>
+		</action>
+		<action name="queryBusiByCity" class="businessAction" method="queryBusiByCity">
+			<result name="success">
+				/page/business/querybusibycity.jsp
+            </result>
+		</action>
+		<action name="bizrecordquery" class="businessAction" method="bizrecordquery">
+			<result name="success">
+				/page/business/bizrecordmembers.jsp
+            </result>
+		</action>
+		<action name="bizrecord" class="businessAction" method="bizrecord">
+			<result name="success">
+				/page/business/bizrecord.jsp
+            </result>
+		</action>
+		<action name="bizrecord" class="businessAction" method="bizrecord">
+			<result name="success">
+				/page/business/bizrecord.jsp
+            </result>
+		</action>
+		<action name="saveBizrecord" class="businessAction" method="saveBizrecord">
+			<result name="success">
+				/page/business/success-window.jsp
+            </result>
+			<result name="input">
+				/page/business/input.jsp
+            </result>
+		</action>
+		<action name="saveBizrecordinit" class="businessAction" method="saveBizrecordinit">
+			<result name="success">
+				/page/business/bizrecordsave.jsp
+            </result>
+		</action>
+		<action name="viewBizrecord" class="businessAction" method="viewBizrecord">
+			<result name="success">
+				/page/business/bizrecord-view.jsp
+            </result>
+		</action>
+		<action name="queryBizrecordinit" class="businessAction"
+			method="queryBizrecordinit">
+			<result name="success">
+				/page/business/querybizrecord.jsp
+            </result>
+			<result name="result">
+				/page/business/noresult.jsp
+            </result>
+		</action>
+		<action name="queryBizrecord" class="businessAction" method="queryBizrecord">
+			<result name="success">
+				/page/business/querybizrecord.jsp
+            </result>
+			<result name="result">
+				/page/business/noresult.jsp
+            </result>
+		</action>
+		<action name="queryPreMedicalInit" class="businessAction"
+			method="queryPreMedicalInit">
+			<result name="success">
+				/page/business/premedicalquery.jsp
+            </result>
+			<result name="error">
+				/page/business/error.jsp
+            </result>
+		</action>
+		<action name="queryPreMedical" class="businessAction" method="queryPreMedical">
+			<result name="success">
+				/page/business/premedicalpersons.jsp
+            </result>
+		</action>
+		<action name="approvePreMedicalInit" class="businessAction"
+			method="approvePreMedicalInit">
+			<result name="success">
+				/page/business/premedicalapprove.jsp
+            </result>
+			<result name="error">
+				/page/business/error.jsp
+            </result>
+		</action>
+		<action name="approvePreMedical" class="businessAction" method="approvePreMedical">
+			<result name="success">
+				/page/business/premedicalapproveresult.jsp
+			</result>
+		</action>
+		<action name="viewPreMedicalInit" class="businessAction"
+			method="viewPreMedicalInit">
+			<result name="success">
+				/page/business/premedicalbrowse.jsp
+            </result>
+			<result name="error">
+				/page/business/error.jsp
+            </result>
+		</action>
+		<action name="viewPreMedical" class="businessAction" method="viewPreMedical">
+			<result name="success">
+				/page/business/premedicalbrowse.jsp
+            </result>
+		</action>
+		<action name="premedicalapproveview" class="businessAction"
+			method="premedicalapproveview">
+			<result name="success">
+				/page/business/premedicalapproveview.jsp
+            </result>
+		</action>
+		<action name="queryDailyMedicalInit" class="businessAction"
+			method="queryDailyMedicalInit">
+			<result name="success">
+				/page/business/dailymedicalquery.jsp
+            </result>
+			<result name="error">
+				/page/business/error.jsp
+            </result>
+		</action>
+		<action name="queryDailyMedical" class="businessAction" method="queryDailyMedical">
+			<result name="success">
+				/page/business/dailymedicalpersons.jsp
+            </result>
+		</action>
+		<action name="approveDailyMedicalInit" class="businessAction"
+			method="approveDailyMedicalInit">
+			<result name="success">
+				/page/business/dailymedicalapprove.jsp
+            </result>
+			<result name="error">
+				/page/business/error.jsp
+            </result>
+		</action>
+		<action name="approveDailyMedical" class="businessAction"
+			method="approveDailyMedical">
+			<result name="success">
+				/page/business/dailymedicalapproveresult.jsp
+			</result>
+		</action>
+		<action name="viewDailyMedicalInit" class="businessAction"
+			method="viewDailyMedicalInit">
+			<result name="success">
+				/page/business/dailymedicalbrowse.jsp
+            </result>
+			<result name="error">
+				/page/business/error.jsp
+            </result>
+		</action>
+		<action name="viewDailyMedical" class="businessAction" method="viewDailyMedical">
+			<result name="success">
+				/page/business/dailymedicalbrowse.jsp
+            </result>
+		</action>
+		<action name="dailymedicalapproveview" class="businessAction"
+			method="dailymedicalapproveview">
+			<result name="success">
+				/page/business/dailymedicalapproveview.jsp
+			</result>
+		</action>
+		<!-- 手动报销审批 -->
+		<action name="manualquerymember" class="businessAction" method="manualquerymember">
+			<result name="success">
+				/page/business/manual.jsp
+            </result>
+			<result name="input">
+				/page/business/manualquerymember.jsp
+            </result>
+		</action>
+		<action name="savemanualinit" class="businessAction" method="savemanualinit">
+			<result name="success">
+				/page/business/manualsave.jsp
+            </result>
+		</action>
+		<action name="savemanual" class="businessAction" method="savemanual">
+			<result name="success">
+				/page/business/success-window.jsp
+            </result>
+			<result name="input">
+				/page/business/input.jsp
+            </result>
+		</action>
+		<action name="viewmanual" class="businessAction" method="viewmanual">
+			<result name="success">
+				/page/business/manualview.jsp
+            </result>
+		</action>
+		<action name="cancelmanual" class="businessAction" method="cancelmanual">
+			<result name="success">
+				/page/business/success.jsp
+            </result>
+		</action>
+		<action name="querymanualinit" class="businessAction" method="querymanualinit">
+			<result name="success">
+				/page/business/querymanual.jsp
+            </result>
+		</action>
+		<action name="querymanual" class="businessAction" method="querymanual">
+			<result name="success">
+				/page/business/querymanual.jsp
+            </result>
+		</action>
+	</package>
+	<package name="print" extends="jasperreports-default"
+		namespace="/page/business">
+		<interceptors>
+			<interceptor class="com.medical.interceptor.AuthorityInterceptor"
+				name="authority" />
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault">
+		</default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">
+				/logout.jsp
+            </result>
+		</global-results>
+		<action name="printmanual" class="businessAction" method="printmanual">
+		</action>
+		<action name="printmanual1" class="businessAction" method="printmanual1">
+			<result name="success" type="jasper">
+				<param name="location">/page/business/apppaper.jasper</param>
+				<param name="dataSource">manualapproves</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
+		<action name="printbill" class="businessAction" method="printbill">
+			<result name="success" type="jasper">
+				<param name="location">/page/business/bill.jasper</param>
+				<param name="dataSource">bills</param>
+				<param name="format">PDF</param>
+				<param name="reportParameters">map</param>
+			</result>
+		</action>
+		<action name="printbilloneinit" class="businessAction" method="printbilloneinit">
+			 <result name="success">
+				/page/billing/billingone.jsp
+			</result>
+		</action>
+		<action name="printbillone" class="businessAction" method="printbillone">
+			<result name="success" type="jasper">
+				<param name="location">/page/business/billone.jasper</param>
+				<param name="dataSource">bills</param>
+				<param name="format">PDF</param>
+				<param name="reportParameters">map</param>
+			</result>
+			<result name="input">
+				/page/billing/billingone.jsp
+			</result>
+		</action>
+		<action name="modifymanual" class="businessAction" method="manualmodify">
+			<result name="success">
+				/page/business/manualmodify.jsp
+			</result>
+		</action>
+		<action name="printhr" method="printhr" class="chronicAction">
+			<result name="success" type="jasper">
+				<param name="location">/page/business/healthrecord.jasper</param>
+				<param name="dataSource">cas</param>
+				<param name="format">PDF</param>
+				<param name="reportParameters">chronics</param>
+			</result>
+		</action>
+		<action name="printasp" method="printasp" class="chronicAction">
+			<result name="success" type="jasper">
+				<param name="location">/page/business/asp.jasper</param>
+				<param name="dataSource">aas</param>
+				<param name="format">PDF</param>
+				<param name="reportParameters">asps</param>
+			</result>
+			<result name="error">
+				/page/business/applysalvation/result.jsp
+			</result>
+		</action>
+	</package>
+</struts>

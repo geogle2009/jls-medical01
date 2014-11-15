@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<bean id="dictionaryHandle" class="com.medical.system.impl.DictionaryHandleImpl">
+	</bean>
+	<bean id="pager" class="com.medical.common.Pager">
+	</bean>
+	<bean id="systemManager" class="com.medical.service.impl.SystemManagerImpl">
+		<property name="sysTEmployeeDAO" ref="sysTEmployeeDAO"></property>
+		<property name="executSQLDAO" ref="executSQLDAO"></property>
+		<property name="pager" ref="pager"></property>
+	</bean>
+	<bean id="searchService" class="com.medical.service.impl.SearchServiceImpl">
+		<property name="vbSearchinfoDAO" ref="vbSearchinfoDAO"></property>
+		<property name="pager" ref="pager"></property>
+		<property name="sysTOrganizationDAO" ref="sysTOrganizationDAO"></property>
+		<property name="executSQLDAO" ref="executSQLDAO"></property>
+		<property name="dmBizdeptDAO" ref="dmBizdeptDAO"></property>
+	</bean>
+	<bean id="businessService" class="com.medical.service.impl.BusinessServiceImpl">
+		<property name="memberBaseinfoDAO" ref="memberBaseinfoDAO"></property>
+		<property name="dmBizdeptDAO" ref="dmBizdeptDAO"></property>
+		<property name="icd10DAO" ref="icd10DAO"></property>
+		<property name="jzBizDAO" ref="jzBizDAO"></property>
+		<property name="jzPaylistDAO" ref="jzPaylistDAO"></property>
+		<property name="dictionaryHandle" ref="dictionaryHandle"></property>
+		<property name="jzActDAO" ref="jzActDAO"></property>
+		<property name="jzBizHistoryDAO" ref="jzBizHistoryDAO"></property>
+		<property name="sysTOrganizationDAO" ref="sysTOrganizationDAO"></property>
+		<property name="pager" ref="pager"></property>
+		<property name="jzManualDAO" ref="jzManualDAO"></property>
+		<property name="executSQLDAO" ref="executSQLDAO"></property>
+	</bean>
+	<bean id="bizCheckService" class="com.medical.service.impl.BizCheckServiceImpl">
+		<property name="executSQLDAO" ref="executSQLDAO"></property>
+		<property name="jzBizDAO" ref="jzBizDAO"></property>
+		<property name="jzBizcheckDAO" ref="jzBizcheckDAO"></property>
+		<property name="pager" ref="pager"></property>
+	</bean>
+	<bean id="baseinfoService" class="com.medical.service.impl.BaseinfoServiceImpl">
+		<property name="memberBaseinfoDAO" ref="memberBaseinfoDAO"></property>
+		<property name="executSQLDAO" ref="executSQLDAO"></property>
+		<property name="jzBizDAO" ref="jzBizDAO"></property>
+		<property name="pager" ref="pager"></property>
+		<property name="testSsnDAO" ref="testSsnDAO"></property>
+		<property name="jzMedicalafterDAO" ref="jzMedicalafterDAO"></property>
+		<property name="jzActDAO" ref="jzActDAO"></property>
+	</bean>
+	<bean id="emeCheckService" class="com.medical.service.impl.EmeCheckServiceImpl">
+		<property name="pager" ref="pager"></property>
+		<property name="jzEmecheckDAO" ref="jzEmecheckDAO"></property>
+		<property name="executSQLDAO" ref="executSQLDAO"></property>
+		<property name="memberBaseinfoDAO" ref="memberBaseinfoDAO"></property>
+	</bean>
+	<bean id="jfreechartService" class="com.medical.service.impl.JfreechartServiceImpl">
+		<property name="executSQLDAO" ref="executSQLDAO"></property>
+	</bean>
+	<bean id="chronicApproveService" class="com.medical.service.impl.ChronicApproveServiceImpl">
+		<property name="jzChronicapproveDAO" ref="jzChronicapproveDAO"></property>
+		<property name="executSQLDAO" ref="executSQLDAO"></property>
+		<property name="memberBaseinfoDAO" ref="memberBaseinfoDAO"></property>
+		<property name="jzAnnexDAO" ref="jzAnnexDAO"></property>
+		<property name="pager" ref="pager"></property>
+		<property name="jzChronicstatusDAO" ref="jzChronicstatusDAO"></property>
+		<property name="dictionaryHandle" ref="dictionaryHandle"></property>
+		<property name="jzChronicbillDAO" ref="jzChronicbillDAO"></property>
+		<property name="jzAspapproveDAO" ref="jzAspapproveDAO"></property>
+		<property name="sysTOrganizationDAO" ref="sysTOrganizationDAO"></property>
+	</bean>
+	<bean id="chronicBillService" class="com.medical.service.impl.ChronicBillServiceImpl">
+		<property name="jzChronicbillDAO" ref="jzChronicbillDAO"></property>
+		<property name="jzChronicstatusDAO" ref="jzChronicstatusDAO"></property>
+		<property name="executSQLDAO" ref="executSQLDAO"></property>
+		<property name="pager" ref="pager"></property>
+		<property name="sysTOrganizationDAO" ref="sysTOrganizationDAO"></property>
+		<property name="jzChronicbillemployDAO" ref="jzChronicbillemployDAO"></property>
+	</bean>
+	<bean id="authorityInterceptor" class="com.medical.interceptor.AuthorityInterceptor" scope="request">
+		<property name="systemManager" ref="systemManager"></property>
+	</bean>
+	<bean id="loginAction" class="com.medical.action.LoginAction" scope="request">
+		<property name="systemManager" ref="systemManager"></property>
+	</bean>
+	<bean id="indexAction" class="com.medical.action.IndexAction" scope="request"></bean>
+	<bean id="menuAction" class="com.medical.action.MenuAction" scope="request"></bean>
+	<bean id="businessAction" class="com.medical.action.BusinessAction"
+		scope="request">
+		<property name="businessService" ref="businessService"></property>
+		<property name="dictionaryHandle" ref="dictionaryHandle"></property>
+		<property name="searchService" ref="searchService"></property>
+	</bean>
+	<bean id="searchAction" class="com.medical.action.SearchAction" scope="request">
+		<property name="searchService" ref="searchService"></property>
+		<property name="jfreechartService" ref="jfreechartService"></property>
+	</bean>
+	<bean id="bizCheckAction" class="com.medical.action.BizCheckAction" scope="request">
+		<property name="searchService" ref="searchService"></property>
+		<property name="bizCheckService" ref="bizCheckService"></property>
+	</bean>
+	<bean id="detailAction" class="com.medical.action.DetailAction" scope="request">
+		<property name="systemManager" ref="systemManager"></property>
+	</bean>
+	<bean id="baseinfoAction" class="com.medical.action.BaseinfoAction" scope="request">
+		<property name="baseinfoService" ref="baseinfoService"></property>
+	</bean>
+	<bean id="emeCheckAction" class="com.medical.action.EmeCheckAction" scope="request">
+		<property name="emeCheckService" ref="emeCheckService"></property>
+	</bean>
+	<bean id="downloadExcelAction" class="com.medical.action.DownloadExcelAction" scope="request">
+		<property name="searchService" ref="searchService"></property>
+	</bean>
+	<bean id="chronicAction" class="com.medical.action.ChronicAction"
+		scope="request">
+		<property name="chronicApproveService" ref="chronicApproveService"></property>
+		<property name="chronicBillService" ref="chronicBillService"></property>
+	</bean>
+	<bean id="chronicBillAction" class="com.medical.action.ChronicBillAction"
+		scope="request">
+		<property name="chronicBillService" ref="chronicBillService"></property>
+	</bean>
+	<bean id="checkAction" class="com.medical.action.CheckAction"
+		scope="request">
+		<property name="baseinfoService" ref="baseinfoService"></property>
+		<property name="searchService" ref="searchService"></property>
+	</bean>
+	<bean id="medicalafterAction" class="com.medical.action.MedicalafterAction"
+		scope="request">
+		<property name="baseinfoService" ref="baseinfoService"></property>
+		<property name="searchService" ref="searchService"></property>
+		<property name="businessService" ref="businessService"></property>
+	</bean>
+
+	<!-- Transaction manager for a single JDBC DataSource -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<aop:config>
+		<aop:pointcut id="servicesPointcut"
+			expression="execution(* com.medical.service.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="servicesPointcut" />
+	</aop:config>
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="query*" read-only="true" />
+			<tx:method name="get*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+</beans>
