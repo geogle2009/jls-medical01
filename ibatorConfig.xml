@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE ibatorConfiguration PUBLIC "-//Apache Software Foundation//DTD Apache iBATIS Ibator Configuration 1.0//EN" "http://ibatis.apache.org/dtd/ibator-config_1_0.dtd" >
 <ibatorConfiguration>
-	<classPathEntry location="F:\workspace\libs\ojdbc14.jar"></classPathEntry>
+	<classPathEntry location="D:\wangjia\jlib\ojdbc6.jar"></classPathEntry>
 	<ibatorContext id="oracleTables" targetRuntime="Ibatis2Java5">
 		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
 			connectionURL="jdbc:oracle:thin:@10.10.10.2:1521:orcl" userId="yljzn"
@@ -72,12 +72,15 @@
 			<generatedKey column="MA_ID"
 				sqlStatement="select CC.nextval from dual" />  
 			</table> -->
-			
-			
-			<table schema="yljzn" tableName="jz_act">
+			<table schema="yljzn" tableName="JZ_MEDICALAFTER">
+			<property name="ignoreQualifiersAtRuntime" value="true" />
+			<generatedKey column="MA_ID"
+				sqlStatement="select CC.nextval from dual" />  
+			</table>
+			<table schema="yljzn" tableName="JZ_ACT">
 			<property name="ignoreQualifiersAtRuntime" value="true" />
 			<generatedKey column="ACT_ID"
-				sqlStatement="select xact_id.nextval from dual" />  
+				sqlStatement="select JZ_ACT_SEQ.NEXTVAL from dual" />  
 			</table>
 	</ibatorContext>
 </ibatorConfiguration>
