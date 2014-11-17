@@ -74,8 +74,8 @@
 		<tr>
 			<td><s:property value="membername"/></td>
 			<td>
-				<s:if test="medicaltype==0">住院</s:if>
-				<s:elseif test="medicaltype==1">门诊</s:elseif>
+				<s:if test="medicaltype==1">住院</s:if>
+				<s:elseif test="medicaltype==2">门诊</s:elseif>
 			</td>
 			<td><s:date name="updatetime" format="yyyy-MM-dd"/></td>
 			<td><s:property value="totalcost"/></td>

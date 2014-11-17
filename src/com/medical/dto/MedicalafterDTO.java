@@ -48,6 +48,15 @@ public class MedicalafterDTO {
 	private String r;
 	private BigDecimal num;//年度出院次数
 	private BigDecimal indate;//住院天数
+	private BigDecimal sumpay;//累计救助金
+
+	public BigDecimal getSumpay() {
+		return sumpay;
+	}
+
+	public void setSumpay(BigDecimal sumpay) {
+		this.sumpay = sumpay;
+	}
 
 	public BigDecimal getMaId() {
 		return maId;

@@ -93,6 +93,7 @@
 				<param name="location">/page/medicalafter/medicalafter_inhospital.jasper</param>
 				<param name="dataSource">medicalafterDTO</param>
 				<param name="format">PDF</param>
+				<param name="reportParameters">map</param>
 			</result>
 		</action>
 		<action name="printoutpatient" class="medicalafterAction"
@@ -101,6 +102,7 @@
 				<param name="location">/page/medicalafter/medicalafter_outpatient.jasper</param>
 				<param name="dataSource">medicalafterDTO</param>
 				<param name="format">PDF</param>
+				<param name="reportParameters">map</param>
 			</result>
 		</action>
 	</package>

@@ -63,8 +63,8 @@
 				<s:elseif test="hospitallevel==3">区级</s:elseif>
 			</td>
 			<td width="3%">
-				<s:if test="medicaltype==0">住院</s:if>
-				<s:elseif test="medicaltype==1">门诊</s:elseif>
+				<s:if test="medicaltype==1">住院</s:if>
+				<s:elseif test="medicaltype==2">门诊</s:elseif>
 			</td>
 			<td width="6%"><s:date name="begintime" format="yyyy-MM-dd"/></td>
 			<td width="6%"><s:date name="endtime" format="yyyy-MM-dd"/></td>

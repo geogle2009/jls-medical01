@@ -88,9 +88,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td width="17%">开始时间</td>
+			<td width="17%">住院时间</td>
 			<td ><s:date name="medicalafterDTO.begintime" format="yyyy-MM-dd"/>&nbsp;</td>
-			<td width="17%">结束时间</td>
+			<td width="17%">出院时间</td>
 			<td colspan="3"><s:date name="medicalafterDTO.endtime" format="yyyy-MM-dd"/>&nbsp;</td>
 		</tr>
 		<tr>
@@ -105,7 +105,26 @@
 				&nbsp;
 			</td>
 			<td width="17%">门诊大病</td>
-			<td ><s:property value="medicalafterDTO.diagnose" />&nbsp;</td>
+			<td >
+			<s:if test="medicalafterDTO.diagnose==-1">
+				其他
+			</s:if>
+			<s:elseif test="medicalafterDTO.diagnose==0001">
+				尿毒症
+			</s:elseif>
+			<s:elseif test="medicalafterDTO.diagnose==0002">
+				肝、肾脏移植（抗排异治疗）
+			</s:elseif>
+			<s:elseif test="medicalafterDTO.diagnose==0004">
+				肿瘤（仅限于放疗、化疗）
+			</s:elseif>
+			<s:elseif test="medicalafterDTO.diagnose==0005">
+				骨髓移植（抗排异治疗）
+			</s:elseif>
+			<s:elseif test="medicalafterDTO.diagnose==0006">
+				心脏移植（抗排异治疗）
+			</s:elseif>
+			</td>
 			<td width="17%">患病名称</td>
 			<td ><s:property value="medicalafterDTO.sickencontent"/>&nbsp;</td>
 		</tr>
@@ -117,6 +136,11 @@
 			<td width="17%">不参与补偿金额</td>
 			<td><s:property value="medicalafterDTO.outpay"/>&nbsp;</td>
 		</tr>
+		<tr>
+			<td width="17%">起付线</td>
+			<td><s:property value="medicalafterDTO.payLine"/>&nbsp;</td>
+			<td width="17%">医院补助</td>
+			<td colspan="3"><s:property value="medicalafterDTO.hospitalpay"/>&nbsp;</td>
 		<tr>
 			<td width="17%">大病保险金额</td>
 			<td><s:property value="medicalafterDTO.capay"/>&nbsp;</td>
@@ -151,7 +175,7 @@
 			</s:url>
 	</s:if>
 	<s:elseif test="medicalafterDTO.medicaltype==2">
-			<s:url action="printVoucherOutpatient" id="print">
+			<s:url action="printoutpatient" id="print">
 				<s:param name="medicalafterDTO.maId">
 					<s:property value="medicalafterDTO.maId" />
 				</s:param>

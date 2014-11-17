@@ -660,9 +660,9 @@ public class BaseinfoServiceImpl implements BaseinfoService {
 					+ " jma.asisstpay, jma.createtime, jma.updatetime, jma.member_id, jma.member_type, jma.implsts,"
 					+ " jma.tiketno, jma.medicaltype, jma.insuretype, jma.persontype, jma.on_no, jma.pay_line, "
 					+ " jma.hospitalpay, jma.diagnose, " 
-					+ " mb.address,c.num,(trunc(jma.endtime, 'dd') - trunc(jma.begintime, 'dd')) as indate "
+					+ " mb.address,mb.sex,c.num,c.sumpay,(trunc(jma.endtime, 'dd') - trunc(jma.begintime, 'dd')) as indate "
 					+ " from jz_medicalafter jma,  member_baseinfo mb, "
-					+ " (select ma.member_id, ma.member_type, count(*) as num "
+					+ " (select ma.member_id, ma.member_type, count(*) as num,sum(ma.asisstpay) as sumpay "
 					+ " from jz_medicalafter ma "
 					+ " where to_char(ma.endtime, 'yyyy') = '"+year+"' "
 					+ " group by ma.member_id, ma.member_type) c "
@@ -701,6 +701,7 @@ public class BaseinfoServiceImpl implements BaseinfoService {
 			medicalafterDTO.setPayLine((BigDecimal)map.get("PAY_LINE"));
 			medicalafterDTO.setHospitalpay((BigDecimal)map.get("HOSPITALPAY"));
 			medicalafterDTO.setInsuretype((String)map.get("INSURETYPE"));
+			medicalafterDTO.setSumpay((BigDecimal)map.get("SUMPAY"));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

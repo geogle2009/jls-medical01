@@ -152,11 +152,11 @@
 						list="%{#{'1':'省级','2':'市级','3':'区级'}}"></s:radio>&nbsp;</td>
 			</tr>
 			<tr>
-				<td width="17%">开始时间</td>
+				<td width="17%">住院时间</td>
 				<td><input type="text" readonly="readonly" id="begintime"
 					name="medicalafterDTO.begintime"
 					value="<s:date name="medicalafterDTO.begintime" format="yyyy-MM-dd"/>" /></td>
-				<td width="17%">结束时间</td>
+				<td width="17%">出院时间</td>
 				<td colspan="3"><input type="text" readonly="readonly"
 					id="endtime" name="medicalafterDTO.endtime"
 					value="<s:date name="medicalafterDTO.endtime" format="yyyy-MM-dd"/>" /></td>
