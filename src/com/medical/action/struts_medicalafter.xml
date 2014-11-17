@@ -17,7 +17,7 @@
 			<result name="login" type="redirect">/logout.jsp</result>
 			<result name="norole" type="redirect">/page/norole.jsp</result>
 		</global-results>
-		
+
 		<action name="afterquerymemberinit" class="medicalafterAction"
 			method="afterquerymemberinit">
 			<result name="success">/page/medicalafter/afterquerymember.jsp
@@ -43,19 +43,17 @@
 			method="queryafterinit">
 			<result name="success">
 				/page/medicalafter/querymedicalafter.jsp
-            </result>
+			</result>
 			<result name="result">
 				/page/medicalafter/error.jsp
-            </result>
+			</result>
 		</action>
-		<action name="queryafter" class="medicalafterAction"
-			method="queryafter">
+		<action name="queryafter" class="medicalafterAction" method="queryafter">
 			<result name="success">
 				/page/medicalafter/querymedicalafter.jsp
-            </result>
-         </action>
-         <action name="countassist" class="medicalafterAction"
-			method="countassist">
+			</result>
+		</action>
+		<action name="countassist" class="medicalafterAction" method="countassist">
 			<result type="json">
 				<param name="root">
 					result
@@ -70,6 +68,40 @@
 					true
 				</param>
 			</result>
-         </action>
+		</action>
+	</package>
+	<package name="printmedicalafter" extends="jasperreports-default"
+		namespace="/page/medicalafter">
+		<interceptors>
+			<interceptor class="com.medical.interceptor.AuthorityInterceptor"
+				name="authority" />
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="mydefault">
+		</default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">
+				/logout.jsp
+            </result>
+		</global-results>
+		<action name="printinhospital" class="medicalafterAction"
+			method="printinhospital">
+			<result name="success" type="jasper">
+				<param name="location">/page/medicalafter/medicalafter_inhospital.jasper</param>
+				<param name="dataSource">medicalafterDTO</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
+		<action name="printoutpatient" class="medicalafterAction"
+			method="printoutpatient">
+			<result name="success" type="jasper">
+				<param name="location">/page/medicalafter/medicalafter_outpatient.jasper</param>
+				<param name="dataSource">medicalafterDTO</param>
+				<param name="format">PDF</param>
+			</result>
+		</action>
 	</package>
 </struts>

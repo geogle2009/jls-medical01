@@ -62,6 +62,22 @@
 		div1.appendChild(delimg);
 		num=num+1;
 	}
+	function medicaltypechange(b){
+		var diagnose = document.getElementById("diagnose");
+		var sickencontent = document.getElementById("sickencontent");
+		 if(b.value==1){
+			diagnose.value = "-1";
+			diagnose.disabled = true;
+			sickencontent.value = "";
+			sickencontent.disabled = false;
+		}else if (b.value==2){
+			diagnose.value = "-1";
+			diagnose.disabled = false;
+			sickencontent.value = "";
+			sickencontent.disabled = true;
+		} 
+
+	}
 </script>
 <title>医后报销录入</title>
 </head>
@@ -148,14 +164,14 @@
 			<tr>
 				<td width="17%">救助类型</td>
 				<td><s:select id="medicaltype"
-						name="medicalafterDTO.medicaltype" list="#{'1':'住院','2':'门诊'}"
-						listKey="key" listValue="value"></s:select></td>
+						name="medicalafterDTO.medicaltype" list="#{'1':'住院','2':'门诊大病'}"
+						listKey="key" listValue="value" onchange="medicaltypechange(this);"></s:select></td>
 				<td width="17%">门诊大病</td>
 				<td colspan="1">
-						<s:select name="medicalafterDTO.diagnose" list="#{'0001':'尿毒症','0002':'肝、肾脏移植（抗排异治疗）','0004':'肿瘤（仅限于放疗、化疗）','0005':'骨髓移植（抗排异治疗）','0006':'心脏移植（抗排异治疗）','-1':'其他'}" listKey="key" listValue="value"></s:select>
+						<s:select disabled="true" id="diagnose" name="medicalafterDTO.diagnose" list="#{'-1':'其他','0001':'尿毒症','0002':'肝、肾脏移植（抗排异治疗）','0004':'肿瘤（仅限于放疗、化疗）','0005':'骨髓移植（抗排异治疗）','0006':'心脏移植（抗排异治疗）'}" listKey="key" listValue="value"></s:select>
 					</td>
 					<td>患病名称</td>
-					<td><s:textfield id="sickencontent"
+					<td><s:textfield id="sickencontent" disabled="false"
 						name="medicalafterDTO.sickencontent"/></td>
 			</tr>
 			<tr>
@@ -233,7 +249,7 @@
 		</table>
 		<div id="hiddiv"></div>
 		<div align="center">
-			<s:submit value="保存" />
+			<s:submit value="保存" id="sub" disabled="true"/>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<button onclick="window.close()">关闭</button>
 		</div>
@@ -251,6 +267,9 @@
 		var begintime = $("#begintime")[0].value;
 		var endtime = $("#endtime")[0].value;
 		var sickencontent = $("#sickencontent")[0].value;
+		var medicaltype = $("#medicaltype")[0].value;
+		var diagnose = $("#diagnose")[0].value;
+		var filenames = document.getElementsByName("filebase64");
 		if ("1" == insuretype || "2" == insuretype || "3" == insuretype) {
 		} else {
 			alert("请选择保障类别！");
@@ -284,11 +303,36 @@
 			flag = false;
 			return flag;
 		}
-		if ("" == sickencontent) {
-			alert("请输入患病名称！");
+		if(medicaltype=="1"){
+			if ("" == sickencontent) {
+				alert("请输入患病名称！");
+				flag = false;
+				return flag;
+			}
+		}else if(medicaltype=="2"){
+			var value = "";
+			if("-1"==diagnose){
+				value="其他";
+			}else if("0001"==diagnose){
+				value="尿毒症";
+			}else if("0002"==diagnose){
+				value="肝、肾脏移植（抗排异治疗）";
+			}else if("0004"==diagnose){
+				value="肿瘤（仅限于放疗、化疗）";
+			}else if("0005"==diagnose){
+				value="骨髓移植（抗排异治疗）";
+			}else if("0006"==diagnose){
+				value="心脏移植（抗排异治疗）";
+			}
+			alert("门诊大病选择："+value);
+		}
+		/* if(filenames.length>0){
+			alert("有附件");
+		}else{
+			alert("必须上传附件！");
 			flag = false;
 			return flag;
-		}
+		} */
 		return flag;
 	}
 
@@ -310,6 +354,7 @@
 	        	 alert(dataObj.r);
 	        	 $("#asisstpay")[0].value=dataObj.assitpay;
 	        	 $("#actid")[0].value=dataObj.actId;
+	        	 $("#sub")[0].disabled = false;
 	        }    
 	    }); 
 	}

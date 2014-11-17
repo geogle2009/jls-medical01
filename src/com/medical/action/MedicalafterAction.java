@@ -143,6 +143,16 @@ public class MedicalafterAction extends ActionSupport {
 		this.setOrgs(this.businessService.getOrganList(orgid));
 		return SUCCESS;
 	}
+	
+	public String printinhospital(){
+		medicalafterDTO = this.baseinfoService.findMemberInfoPrint(medicalafterDTO);
+		return SUCCESS;
+	}
+	
+	public String printoutpatient(){
+		medicalafterDTO = this.baseinfoService.findMemberInfoPrint(medicalafterDTO);
+		return SUCCESS;
+	}
 
 	public BaseinfoService getBaseinfoService() {
 		return baseinfoService;

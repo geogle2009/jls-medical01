@@ -2,17 +2,25 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sx" uri="/struts-dojo-tags"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <s:head theme="simple" />
 <sx:head extraLocales="en-us,nl-nl,de-de" />
+<base target="_self">
 <link rel="stylesheet" href="../css/table-style.css" type="text/css"></link>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Pragma" content="no-cache">
 <title>医后报销录入成功</title>
 </head>
 <body style="padding:10px  10px  10px   10px;">
+
 	<table align="center" width="100%" class="t1" border="0" cellpadding="0"
 		cellspacing="0">
 		<tr>
@@ -88,16 +96,18 @@
 		<tr>
 			<td width="17%">救助类型</td>
 			<td >
-				<s:if test="medicalafterDTO.medicaltype==0">
+				<s:if test="medicalafterDTO.medicaltype==1">
 					住院
 				</s:if>
-				<s:if test="medicalafterDTO.medicaltype==1">
-					门诊
+				<s:if test="medicalafterDTO.medicaltype==2">
+					门诊大病
 				</s:if>
 				&nbsp;
 			</td>
+			<td width="17%">门诊大病</td>
+			<td ><s:property value="medicalafterDTO.diagnose" />&nbsp;</td>
 			<td width="17%">患病名称</td>
-			<td colspan="3"><s:property value="medicalafterDTO.sickencontent"/>&nbsp;</td>
+			<td ><s:property value="medicalafterDTO.sickencontent"/>&nbsp;</td>
 		</tr>
 		<tr>
 			<td width="17%">总费用</td>
@@ -131,6 +141,24 @@
 			</td>
 		</tr>
 	</table>
-	<div align="center"><button onclick="window.close()">关闭</button></div>
+	<div align="center">
+	
+ 	 <s:if test="medicalafterDTO.medicaltype==1">
+			<s:url action="printinhospital" id="print">
+				<s:param name="medicalafterDTO.maId">
+					<s:property value="medicalafterDTO.maId" />
+				</s:param>
+			</s:url>
+	</s:if>
+	<s:elseif test="medicalafterDTO.medicaltype==2">
+			<s:url action="printVoucherOutpatient" id="print">
+				<s:param name="medicalafterDTO.maId">
+					<s:property value="medicalafterDTO.maId" />
+				</s:param>
+			</s:url>
+	</s:elseif>
+				<s:a
+				href="%{print}" cssStyle="cursor:hand" target="_blank">打印</s:a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<button onclick="window.close()">关闭</button></div>
 </body>
 </html>

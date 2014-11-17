@@ -39,4 +39,6 @@ public interface BaseinfoService {
 	public List<MedicalafterDTO> queryMedicalafters(JzMedicalafterExample example,Integer curpage);
 
 	public MedicalafterDTO findCountAssist(MedicalafterDTO medicalafterDTO);
+	
+	public MedicalafterDTO findMemberInfoPrint(MedicalafterDTO m);
 }

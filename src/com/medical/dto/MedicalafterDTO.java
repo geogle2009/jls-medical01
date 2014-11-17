@@ -46,6 +46,8 @@ public class MedicalafterDTO {
 	private String diagnose;
 	private Integer actId;
 	private String r;
+	private BigDecimal num;//年度出院次数
+	private BigDecimal indate;//住院天数
 
 	public BigDecimal getMaId() {
 		return maId;
@@ -375,6 +377,22 @@ public class MedicalafterDTO {
 
 	public void setActId(Integer actId) {
 		this.actId = actId;
+	}
+
+	public BigDecimal getNum() {
+		return num;
+	}
+
+	public void setNum(BigDecimal num) {
+		this.num = num;
+	}
+
+	public BigDecimal getIndate() {
+		return indate;
+	}
+
+	public void setIndate(BigDecimal indate) {
+		this.indate = indate;
 	}
 
 	 
