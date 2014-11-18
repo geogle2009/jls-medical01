@@ -667,7 +667,7 @@ public class BaseinfoServiceImpl implements BaseinfoService {
 					+ " (select ma.member_id, ma.member_type, count(*) as num,sum(ma.asisstpay) as sumpay "
 					+ " from jz_medicalafter ma "
 					+ " where to_char(ma.endtime, 'yyyy') = '"
-					+ year
+					+ year 
 					+ "' "
 					+ " group by ma.member_id, ma.member_type) c "
 					+ " where jma.member_id = mb.member_id "
