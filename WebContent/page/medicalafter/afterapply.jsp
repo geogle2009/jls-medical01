@@ -147,8 +147,8 @@
 				<s:else>
 				<s:radio id="insuretype"
 						name="medicalafterDTO.insuretype"
-						list="%{#{'1':'医保','2':'农合','3':'其他'}}" value="3"></s:radio>
-				</s:else>		
+						list="%{#{'1':'医保','2':'农合','3':'其他'}}"></s:radio>
+				</s:else>
 				&nbsp;</td>
 			</tr>
 			<tr>
@@ -166,7 +166,7 @@
 						list="%{#{'3':'省级','2':'市级','1':'区级'}}"></s:radio>&nbsp;</td>
 			</tr>
 			<tr>
-				<td width="17%">入院时间</td>
+				<td width="17%">住院时间</td>
 				<td><input type="text" readonly="readonly" id="begintime"
 					name="medicalafterDTO.begintime"
 					value="<s:date name="medicalafterDTO.begintime" format="yyyy-MM-dd"/>" /></td>
