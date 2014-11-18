@@ -149,7 +149,7 @@
 				<td width="17%">医院级别</td>
 				<td colspan="2"><s:radio id="hospitallevel"
 						name="medicalafterDTO.hospitallevel"
-						list="%{#{'1':'省级','2':'市级','3':'区级'}}"></s:radio>&nbsp;</td>
+						list="%{#{'3':'省级','2':'市级','1':'区级'}}"></s:radio>&nbsp;</td>
 			</tr>
 			<tr>
 				<td width="17%">住院时间</td>
