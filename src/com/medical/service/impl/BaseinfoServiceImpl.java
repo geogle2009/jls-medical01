@@ -555,9 +555,9 @@ public class BaseinfoServiceImpl implements BaseinfoService {
 				jzAct.setActBizTimes((short) (jzAct.getActBizTimes() + 1));
 			} else {
 			}
-			 Calendar calendar = Calendar.getInstance();  
-			    calendar.setTime(new Date());  
-			    int year = calendar.get(Calendar.YEAR);  
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(new Date());
+			int year = calendar.get(Calendar.YEAR);
 			jzAct.setActYear((short) year);
 			jzActDAO.updateByPrimaryKeySelective(jzAct);
 		} else {
@@ -570,12 +570,13 @@ public class BaseinfoServiceImpl implements BaseinfoService {
 	@Override
 	public MedicalafterDTO findCountAssist(MedicalafterDTO medicalafterDTO) {
 		try {
+			Calendar cal = Calendar.getInstance();
+			int year = cal.get(Calendar.YEAR);
 			JzActExample example = new JzActExample();
 			example.createCriteria()
 					.andMemberIdEqualTo(medicalafterDTO.getMemberId())
 					.andMemberTypeEqualTo(medicalafterDTO.getMemberType())
-					.andActYearEqualTo((short) Calendar.YEAR);
-
+					.andActYearEqualTo((short) year);
 			List<JzAct> acts = jzActDAO.selectByExample(example);
 			JzAct currentact = new JzAct();
 			if (null != acts && acts.size() > 0) {
@@ -647,61 +648,63 @@ public class BaseinfoServiceImpl implements BaseinfoService {
 		}
 		return medicalafterDTO;
 	}
-	
+
 	@SuppressWarnings("rawtypes")
-	public MedicalafterDTO findMemberInfoPrint(MedicalafterDTO m){
+	public MedicalafterDTO findMemberInfoPrint(MedicalafterDTO m) {
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
-		MedicalafterDTO medicalafterDTO =  new MedicalafterDTO();
+		MedicalafterDTO medicalafterDTO = new MedicalafterDTO();
 		try {
-			String sql=" select ma_id, jma.familyno, jma.membername, jma.paperid, jma.ssn, jma.hospital, "
+			String sql = " select ma_id, jma.familyno, jma.membername, jma.paperid, jma.ssn, jma.hospital, "
 					+ " jma.hospitallevel, jma.sickencontent, jma.begintime, jma.endtime, jma.approveresult,"
 					+ " jma.approvecontent, jma.totalcost, jma.insurepay, jma.outpay, jma.capay, jma.businesspay, "
 					+ " jma.asisstpay, jma.createtime, jma.updatetime, jma.member_id, jma.member_type, jma.implsts,"
 					+ " jma.tiketno, jma.medicaltype, jma.insuretype, jma.persontype, jma.on_no, jma.pay_line, "
-					+ " jma.hospitalpay, jma.diagnose, " 
+					+ " jma.hospitalpay, jma.diagnose, "
 					+ " mb.address,mb.sex,c.num,c.sumpay,(trunc(jma.endtime, 'dd') - trunc(jma.begintime, 'dd')) as indate "
 					+ " from jz_medicalafter jma,  member_baseinfo mb, "
 					+ " (select ma.member_id, ma.member_type, count(*) as num,sum(ma.asisstpay) as sumpay "
 					+ " from jz_medicalafter ma "
-					+ " where to_char(ma.endtime, 'yyyy') = '"+year+"' "
+					+ " where to_char(ma.endtime, 'yyyy') = '"
+					+ year
+					+ "' "
 					+ " group by ma.member_id, ma.member_type) c "
 					+ " where jma.member_id = mb.member_id "
 					+ " and jma.member_type = mb.ds "
 					+ " and jma.member_id = c.member_id "
 					+ " and jma.member_type = c.member_type "
-					+ " and jma.ma_id = "+m.getMaId();
+					+ " and jma.ma_id = " + m.getMaId();
 			ExecutSQL executSQL = new ExecutSQL();
 			executSQL.setExecutsql(sql);
 			HashMap map = executSQLDAO.queryAll(executSQL).get(0);
-			medicalafterDTO.setMaId((BigDecimal)map.get("MA_ID"));
-			medicalafterDTO.setMembername((String)map.get("MEMBERNAME"));
-			medicalafterDTO.setFamilyno((String)map.get("FAMILYNO"));
-			medicalafterDTO.setPaperid((String)map.get("PAPERID"));
-			medicalafterDTO.setSsn((String)map.get("SSN"));
-			medicalafterDTO.setSex((String)map.get("SEX"));
-			medicalafterDTO.setAddress((String)map.get("ADDRESS"));
-			medicalafterDTO.setPersontype((String)map.get("PERSONTYPE"));
-			medicalafterDTO.setMedicaltype((String)map.get("MEDICALTYPE"));
-			medicalafterDTO.setSickencontent((String)map.get("SICKENCONTENT"));
-			medicalafterDTO.setDiagnose((String)map.get("DIAGNOSE"));
-			medicalafterDTO.setTiketno((String)map.get("TIKETNO"));
-			medicalafterDTO.setHospital((String)map.get("HOSPITAL"));
-			medicalafterDTO.setHospitallevel((String)map.get("HOSPITALLEVEL"));
-			medicalafterDTO.setBegintime((Date)map.get("BIGINTIME"));
-			medicalafterDTO.setEndtime((Date)map.get("ENDTIME"));
-			medicalafterDTO.setNum((BigDecimal)map.get("NUM"));
-			medicalafterDTO.setIndate((BigDecimal)map.get("INDATE"));
-			medicalafterDTO.setTotalcost((BigDecimal)map.get("TOTALCOST"));
-			medicalafterDTO.setInsurepay((BigDecimal)map.get("INSUREPAY"));
-			medicalafterDTO.setOutpay((BigDecimal)map.get("OUTPAY"));
-			medicalafterDTO.setCapay((BigDecimal)map.get("CAPAY"));
-			medicalafterDTO.setBusinesspay((BigDecimal)map.get("BUSINESSPAY"));
-			medicalafterDTO.setAsisstpay((BigDecimal)map.get("ASISSTPAY"));
-			medicalafterDTO.setPayLine((BigDecimal)map.get("PAY_LINE"));
-			medicalafterDTO.setHospitalpay((BigDecimal)map.get("HOSPITALPAY"));
-			medicalafterDTO.setInsuretype((String)map.get("INSURETYPE"));
-			medicalafterDTO.setSumpay((BigDecimal)map.get("SUMPAY"));
+			medicalafterDTO.setMaId((BigDecimal) map.get("MA_ID"));
+			medicalafterDTO.setMembername((String) map.get("MEMBERNAME"));
+			medicalafterDTO.setFamilyno((String) map.get("FAMILYNO"));
+			medicalafterDTO.setPaperid((String) map.get("PAPERID"));
+			medicalafterDTO.setSsn((String) map.get("SSN"));
+			medicalafterDTO.setSex((String) map.get("SEX"));
+			medicalafterDTO.setAddress((String) map.get("ADDRESS"));
+			medicalafterDTO.setPersontype((String) map.get("PERSONTYPE"));
+			medicalafterDTO.setMedicaltype((String) map.get("MEDICALTYPE"));
+			medicalafterDTO.setSickencontent((String) map.get("SICKENCONTENT"));
+			medicalafterDTO.setDiagnose((String) map.get("DIAGNOSE"));
+			medicalafterDTO.setTiketno((String) map.get("TIKETNO"));
+			medicalafterDTO.setHospital((String) map.get("HOSPITAL"));
+			medicalafterDTO.setHospitallevel((String) map.get("HOSPITALLEVEL"));
+			medicalafterDTO.setBegintime((Date) map.get("BIGINTIME"));
+			medicalafterDTO.setEndtime((Date) map.get("ENDTIME"));
+			medicalafterDTO.setNum((BigDecimal) map.get("NUM"));
+			medicalafterDTO.setIndate((BigDecimal) map.get("INDATE"));
+			medicalafterDTO.setTotalcost((BigDecimal) map.get("TOTALCOST"));
+			medicalafterDTO.setInsurepay((BigDecimal) map.get("INSUREPAY"));
+			medicalafterDTO.setOutpay((BigDecimal) map.get("OUTPAY"));
+			medicalafterDTO.setCapay((BigDecimal) map.get("CAPAY"));
+			medicalafterDTO.setBusinesspay((BigDecimal) map.get("BUSINESSPAY"));
+			medicalafterDTO.setAsisstpay((BigDecimal) map.get("ASISSTPAY"));
+			medicalafterDTO.setPayLine((BigDecimal) map.get("PAY_LINE"));
+			medicalafterDTO.setHospitalpay((BigDecimal) map.get("HOSPITALPAY"));
+			medicalafterDTO.setInsuretype((String) map.get("INSURETYPE"));
+			medicalafterDTO.setSumpay((BigDecimal) map.get("SUMPAY"));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
