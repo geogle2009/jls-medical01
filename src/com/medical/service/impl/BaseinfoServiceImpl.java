@@ -703,7 +703,6 @@ public class BaseinfoServiceImpl implements BaseinfoService {
 			medicalafterDTO.setInsuretype((String)map.get("INSURETYPE"));
 			medicalafterDTO.setSumpay((BigDecimal)map.get("SUMPAY"));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return medicalafterDTO;
