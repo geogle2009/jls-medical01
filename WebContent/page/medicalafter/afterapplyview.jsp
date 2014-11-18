@@ -88,7 +88,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td width="17%">住院时间</td>
+			<td width="17%">入院时间</td>
 			<td ><s:date name="medicalafterDTO.begintime" format="yyyy-MM-dd"/>&nbsp;</td>
 			<td width="17%">出院时间</td>
 			<td colspan="3"><s:date name="medicalafterDTO.endtime" format="yyyy-MM-dd"/>&nbsp;</td>

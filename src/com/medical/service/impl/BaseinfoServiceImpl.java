@@ -2,6 +2,7 @@ package com.medical.service.impl;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -693,6 +694,11 @@ public class BaseinfoServiceImpl implements BaseinfoService {
 			medicalafterDTO.setHospitallevel((String) map.get("HOSPITALLEVEL"));
 			medicalafterDTO.setBegintime((Date) map.get("BIGINTIME"));
 			medicalafterDTO.setEndtime((Date) map.get("ENDTIME"));
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String begintime = sdf.format((Date)map.get("BIGINTIME"));
+			String endtime = sdf.format((Date)map.get("ENDTIME"));
+			medicalafterDTO.setBegintimeval(begintime);
+			medicalafterDTO.setEndtimeval(endtime);
 			medicalafterDTO.setNum((BigDecimal) map.get("NUM"));
 			medicalafterDTO.setIndate((BigDecimal) map.get("INDATE"));
 			medicalafterDTO.setTotalcost((BigDecimal) map.get("TOTALCOST"));

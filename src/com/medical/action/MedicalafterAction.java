@@ -289,9 +289,9 @@ public class MedicalafterAction extends ActionSupport {
 		String begin = sdf.format(cal_begin.getTime());
 		Calendar cal_end = Calendar.getInstance();
 		cal_end.setTime(medicalafterDTO.getEndtime());
-		String end = sdf.format(cal_end.getTime());
-		map.put("BEGINTIME", begin);
-		map.put("ENDTIME", end);*/
+		String end = sdf.format(cal_end.getTime());*/
+		map.put("BEGINTIME", medicalafterDTO.getBegintimeval());
+		map.put("ENDTIME", medicalafterDTO.getEndtimeval());
 		map.put("PRINTTIME", printtime);
 		map.put("INDATE", medicalafterDTO.getIndate().toString());
 		map.put("NUM", medicalafterDTO.getNum().toString());

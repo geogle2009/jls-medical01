@@ -14,6 +14,8 @@ public class MedicalafterDTO {
 	private String sickencontent;
 	private Date begintime;
 	private Date endtime;
+	private String begintimeval;
+	private String endtimeval;
 	private String approveresult;
 	private String approvecontent;
 	private BigDecimal totalcost;
@@ -404,6 +406,21 @@ public class MedicalafterDTO {
 		this.indate = indate;
 	}
 
+	public String getBegintimeval() {
+		return begintimeval;
+	}
+
+	public void setBegintimeval(String begintimeval) {
+		this.begintimeval = begintimeval;
+	}
+
+	public String getEndtimeval() {
+		return endtimeval;
+	}
+
+	public void setEndtimeval(String endtimeval) {
+		this.endtimeval = endtimeval;
+	}
 	 
 	
 }
