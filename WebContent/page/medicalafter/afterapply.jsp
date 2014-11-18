@@ -133,9 +133,23 @@
 			</tr>
 			<tr>
 				<td width="17%">保险类型</td>
-				<td colspan="5"><s:radio id="insuretype"
+				<td colspan="5">
+				<s:if test="medicalafterDTO.memberType==1">
+				<s:radio id="insuretype"
 						name="medicalafterDTO.insuretype"
-						list="%{#{'1':'医保','2':'农合','3':'其他'}}"></s:radio>&nbsp;</td>
+						list="%{#{'1':'医保','2':'农合','3':'其他'}}" value="1"></s:radio>
+				</s:if>
+				<s:elseif test="medicalafterDTO.memberType==2">
+				<s:radio id="insuretype"
+						name="medicalafterDTO.insuretype"
+						list="%{#{'1':'医保','2':'农合','3':'其他'}}" value="2"></s:radio>
+				</s:elseif>
+				<s:else>
+				<s:radio id="insuretype"
+						name="medicalafterDTO.insuretype"
+						list="%{#{'1':'医保','2':'农合','3':'其他'}}"></s:radio>
+				</s:else>
+				&nbsp;</td>
 			</tr>
 			<tr>
 				<td width="17%">票据编号</td>
